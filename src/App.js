@@ -1,6 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
 
+function App() {
+  return (
+    <div className="app">
+      <header className="app-header">
+        <a1>The BOX</a1>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+
+/*
 function App() {
   return (
     <div className="App">
@@ -23,3 +35,4 @@ function App() {
 }
 
 export default App;
+*/
