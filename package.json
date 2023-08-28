@@ -11,6 +11,7 @@
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.3.1",
+    "formik": "^2.4.3",
     "history": "^5.3.0",
     "jsonwebtoken": "^9.0.1",
     "lodash": "^4.17.21",
@@ -21,14 +22,18 @@
     "react-player": "^2.12.0",
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
+    "react-validator": "^0.1.0",
     "sass": "^1.66.1",
     "socket.io-client": "^4.7.2",
     "uuid": "^9.0.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

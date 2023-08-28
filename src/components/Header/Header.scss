@@ -1,0 +1,48 @@
+@import "../../styles/partials/animations";
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background-color: slategray;
+  height: 6rem;
+  font-size: 2rem;
+  font-weight: 700;
+
+  border-radius: .25rem;
+
+  &__logo {
+    text-align: center;
+    &:hover {
+      animation: foldCube infinite 1s;
+    }
+  }
+
+  &__menubutton {
+    position: absolute;
+    width: 3rem;
+    left: 1rem;
+
+    transition: all .2s;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+
+      & + .navbar {
+        display: flex;
+        height: auto;
+      }
+    }
+
+    &:active {
+      transform: scale(0.8);
+    }
+
+  }
+}

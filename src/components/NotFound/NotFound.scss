@@ -1,0 +1,40 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  font-size: 48px;
+  font-weight: bold;
+  color: #2c3e50;
+  background-color: #ecf0f1;
+
+  span {
+    display: inline-block;
+    padding: 20px 40px;
+    background-color: #e74c3c;
+    color: #ecf0f1;
+    border-radius: 4px;
+    animation: floatAnimation 4s infinite;
+    transition: all 0.3s ease;
+    cursor: default;
+
+    &:hover {
+      animation-play-state: paused;
+
+      transform: translateY(-5px) rotate(5deg);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  p {
+    margin-left: 20px;
+    font-size: 24px;
+
+    transition: all 1s;
+
+    &:hover {
+      transform: rotate(360deg);
+    }
+  }
+}

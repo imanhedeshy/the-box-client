@@ -1,0 +1,163 @@
+.signup-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  background-color: white;
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+  }
+
+  &__logo {
+    width: 25%;
+    scale: 1;
+    margin: 1rem;
+  }
+
+  &__title {
+    margin-top: 1rem;
+  }
+
+  &__subtitle {
+    position: absolute;
+    rotate: 0.5rad;
+    font-size: 0.8rem;
+    align-self: flex-end;
+    margin-right: -3 rem;
+  }
+
+  &__slogan {
+    margin: 1rem 0;
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 20rem;
+
+    padding: 1rem;
+
+    &__label {
+      width: 100%;
+      padding: 0.25rem 0;
+
+      &--hide {
+        display: none;
+      }
+    }
+
+    &__input {
+      width: 100%;
+      height: 3rem;
+
+      border-radius: 0.25rem;
+      outline: none;
+      border: 0.0625rem solid grey;
+
+      margin: 0.0625rem;
+      padding: 0.5rem 1rem;
+
+      font-size: 1rem;
+
+      &:focus {
+        border: 0.125rem solid blue;
+        margin: 0;
+      }
+    }
+
+    &__button {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      width: 100%;
+      height: 3rem;
+
+      border-radius: 0.25rem;
+      outline: none;
+      background-color: blue;
+      border: 0.0625rem solid blue;
+
+      margin: 0.5rem auto;
+      padding: 0.5rem;
+
+      font-size: 1rem;
+      color: white;
+
+      &--hide {
+        display: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: darkblue;
+      }
+
+      &:active {
+        background-color: black;
+      }
+
+      &--switch {
+        background-color: white;
+        color: grey;
+        border: 0.0625rem solid grey;
+
+        &:hover {
+          cursor: pointer;
+          background-color: white;
+          border-color: blue;
+          color: blue;
+        }
+
+        &:active {
+          background-color: black;
+        }
+      }
+    }
+  }
+}
+
+/* LineWithText.scss */
+.signup-login-form__divider {
+  &--hide {
+    display: none;
+  }
+  .line-with-text {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    transform: translateY(-50%);
+  }
+
+  .text {
+    padding: 0 1rem;
+    background-color: white;
+    z-index: 1;
+  }
+}

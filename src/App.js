@@ -1,12 +1,38 @@
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
+
+import SignUpLogIn from "./pages/SignUpLogIn/SignUpLogIn"
+import Profile from "./pages/Profile/Profile"
+import Yearbook from "./pages/Yearbook/Yearbook"
+import Threads from "./pages/Threads/Threads";
+import NotFound from "./components/NotFound/NotFound";
+
+import Header from "./components/Header/Header"
+import Footer from "./components/Footer/Footer"
 import "./App.scss";
 
 function App() {
   return (
-    <div className="app">
-      <header className="app-header">
-        <a1>The BOX</a1>
-      </header>
-    </div>
+    <Router className="app">
+      <Header />
+      <div className="pages">
+        <Routes>
+          <Route path="/" element={<SignUpLogIn />} />
+          <Route path="/login" element={<SignUpLogIn />} />
+          <Route path="/signup" element={<SignUpLogIn />} />
+          <Route path="/users/:username" element={<Profile />} />
+          <Route path="/yearbook" element={<Yearbook />} />
+          <Route path="/threads" element={<Threads />} />
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </div>
+      <Footer />
+    </Router>
   );
 }
 

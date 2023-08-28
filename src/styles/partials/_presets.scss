@@ -1,0 +1,37 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+@use "./typography" as *;
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+*,
+*::after,
+*::before {
+  font-family: "Avenir Next", "Courier New", Courier, monospace, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  // display: flex;
+  justify-content: center;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+body,
+header,
+main,
+footer {
+  min-width: $min-width;
+  // font-size: 18px;
+}

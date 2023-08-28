@@ -1,0 +1,82 @@
+//Colors
+// Primary Colors
+$BrainFlix-Black: #323232;
+$BrainFlix-Blue: #0095ff;
+$BrainFlix-Silver: #afafaf;
+$BrainFlix-White: #ffffff;
+
+// Secondary Colors
+$BrainFlix-DarkBlack: #000000;
+$BrainFlix-DarkBlue: #0065ad;
+$BrainFlix-Mercury: #e1e1e1;
+$BrainFlix-Alabaster: #fafafa;
+
+// Error Color
+$BrainFlix-ErrorRed: #d22d2d;
+
+
+//Styles
+// Desktop Styles
+$desktop: (
+  pageHeader: (
+    fontSize: 2.0625rem,
+    lineHeight: 2.75rem,
+    textWeight: 700,
+  ),
+  sectionHeader: (
+    fontSize: 0.75rem,
+    lineHeight: 1.25rem,
+    textWeight: 700,
+  ),
+  subheader: (
+    fontSize: 0.875rem,
+    lineHeight: 1.375rem,
+    textWeight: 700,
+  ),
+  bodyCopy: (
+    fontSize: 0.875rem,
+    lineHeight: 1.375rem,
+    textWeight: 400,
+  ),
+  labelsNButtons: (
+    fontSize: 0.75rem,
+    lineHeight: 1.25rem,
+    textWeight: 700,
+  ),
+);
+
+// Mobile Styles
+$mobile: (
+  pageHeader: (
+    fontSize: 1.5rem,
+    lineHeight: 2rem,
+    textWeight: 700,
+  ),
+  sectionHeader: (
+    fontSize: .75rem,
+    lineHeight: 1.25rem,
+    textWeight: 700,
+  ),
+  subheader: (
+    fontSize: .8125rem,
+    lineHeight: 1.125rem,
+    textWeight: 700,
+  ),
+  bodyCopy: (
+    fontSize: .8125rem,
+    lineHeight: 1.125rem,
+    textWeight: 400,
+  ),
+  labelsNButtons: (
+    fontSize: .625rem,
+    lineHeight: 1.25rem,
+    textWeight: 700,
+  ),
+);
+
+//Dimensions
+// Widths
+$min-width: 320px;
+$tablet-width: 768px;
+$desktop-width: 1280px;
+$max-width: 1920px;
