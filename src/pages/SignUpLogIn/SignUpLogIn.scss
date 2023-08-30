@@ -1,3 +1,4 @@
+@import "../../styles/partials/animations";
 .signup-login {
   display: flex;
   flex-direction: column;
@@ -18,9 +19,9 @@
   }
 
   &__logo {
-    width: 25%;
+    width: 50%;
     scale: 1;
-    margin: 1rem;
+    margin: 0.25rem;
   }
 
   &__title {
@@ -29,14 +30,35 @@
 
   &__subtitle {
     position: absolute;
-    rotate: 0.5rad;
+    rotate: 0.3rad;
     font-size: 0.8rem;
     align-self: flex-end;
-    margin-right: -3 rem;
+    margin-right: -3rem;
+    margin-top: -1rem;
+
+    animation: loadingDot 2s infinite;
   }
 
   &__slogan {
+    display: flex;
+    flex-direction: column;
+
     margin: 1rem 0;
+
+    &-text {
+      width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      &:first-child {
+        animation: typing 3s steps(100) forwards 1s;
+      }
+      &:nth-child(2) {
+        animation: typing 4s steps(130) forwards;
+      }
+      &:last-child {
+        animation: typing 3s steps(210) forwards 1s;
+      }
+    }
   }
 
   &-form {
@@ -73,7 +95,7 @@
       font-size: 1rem;
 
       &:focus {
-        border: 0.125rem solid blue;
+        border: 0.125rem solid #1358db;
         margin: 0;
       }
     }
@@ -89,8 +111,8 @@
 
       border-radius: 0.25rem;
       outline: none;
-      background-color: blue;
-      border: 0.0625rem solid blue;
+      background-color: #1358db;
+      border: 0.0625rem solid #1358db;
 
       margin: 0.5rem auto;
       padding: 0.5rem;
@@ -104,7 +126,7 @@
 
       &:hover {
         cursor: pointer;
-        background-color: darkblue;
+        background-color: #003fc2;
       }
 
       &:active {
@@ -119,8 +141,8 @@
         &:hover {
           cursor: pointer;
           background-color: white;
-          border-color: blue;
-          color: blue;
+          border-color: #1358db;
+          color: #1358db;
         }
 
         &:active {

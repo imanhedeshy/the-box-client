@@ -13,10 +13,15 @@ import NotFound from "../../components/NotFound/NotFound";
 
 import "./SignUpLogIn.scss";
 
+import logo from "../../assets/images/logos/theboxlogo.png";
+import { setToken } from "../../utils/storageFuncs";
+
 export default function SignUpLogIn() {
   const [isLoading, setIsLoading] = useState(false);
   const [isFound, setIsFound] = useState(true);
   const [isLogIn, setIsLogIn] = useState(true);
+
+  const [loginError, setLoginError] = useState(null);
 
   const initialFormData = {
     username: "",
@@ -73,7 +78,13 @@ export default function SignUpLogIn() {
         formInputs.username.value,
         formInputs.password.value
       );
-      console.log(result);
+      if (result.success) {
+        const tokenSet = await setToken(result.token);
+        if (tokenSet) navigate("/expo");
+      } else if (!result.success) {
+        console.log(result.error);
+        setLoginError(result.error);
+      }
     } else {
       const result = await signUp(
         formInputs.username.value,
@@ -83,7 +94,6 @@ export default function SignUpLogIn() {
       console.log(result);
     }
     setFormData(initialFormData);
-    // navigate(`/userrs/${}/profile`)
   };
 
   return (
@@ -95,12 +105,19 @@ export default function SignUpLogIn() {
       ) : (
         <>
           <article className="signup-login__description">
-            <img className="signup-login__logo" src="" alt="app logo" />
+            <img className="signup-login__logo" src={logo} alt="app logo" />
             <h3 className="signup-login__title">BrainStation BOX</h3>
-            <span className="signup-login__subtitle">Bridge Of eXperience</span>
-            <p className="signup-login__slogan">
-              Your Journey, Our Bridge, Endless Opportunities
-            </p>
+            <span className="signup-login__subtitle">
+              <strong>B</strong>ridge <strong>O</strong>f<br />e
+              <strong>X</strong>perience
+            </span>
+            <div className="signup-login__slogan">
+              <span className="signup-login__slogan-text">Our Bridge,</span>
+              <span className="signup-login__slogan-text">Your Journey,</span>
+              <span className="signup-login__slogan-text">
+                Endless Opportunities
+              </span>
+            </div>
           </article>
           <form onSubmit={handleSubmit} className="signup-login-form">
             <label className="signup-login-form__label" htmlFor="username">

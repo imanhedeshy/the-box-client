@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./Footer.scss";
 
 import linkedin from "../../assets/images/logos/linkedin.png";
-import twitter from "../../assets/images/logos/twitter.png";
+import twitter from "../../assets/images/logos/twitter (2).png";
 import facebook from "../../assets/images/logos/facebook.png";
 import telegram from "../../assets/images/logos/telegram.png";
 import whatsapp from "../../assets/images/logos/whatsapp.png";

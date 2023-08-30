@@ -17,6 +17,7 @@ export default function Threads() {
 
   useEffect(() => {
     setIsLoading(true);
+    document.title = "The BOX | Threads";
 
     const getThreads = async () => {
       const result = await getThreadsById();

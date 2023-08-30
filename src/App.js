@@ -10,6 +10,7 @@ import SignUpLogIn from "./pages/SignUpLogIn/SignUpLogIn"
 import Profile from "./pages/Profile/Profile"
 import Yearbook from "./pages/Yearbook/Yearbook"
 import Threads from "./pages/Threads/Threads";
+import Expo from "./pages/Expo/Expo";
 import NotFound from "./components/NotFound/NotFound";
 
 import Header from "./components/Header/Header"
@@ -28,6 +29,7 @@ function App() {
           <Route path="/users/:username" element={<Profile />} />
           <Route path="/yearbook" element={<Yearbook />} />
           <Route path="/threads" element={<Threads />} />
+          <Route path="/expo" element={<Expo />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>

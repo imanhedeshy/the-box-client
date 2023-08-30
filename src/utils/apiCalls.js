@@ -5,18 +5,17 @@ const API_URL = process.env.REACT_APP_API_URL;
 const logIn = async (username, password) => {
   try {
     return await axios
-      .get(`${API_URL}/users/${username}`, {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJpbWFuaGVkZXNoeSIsImlhdCI6MTY5MzExNzIzNywiZXhwIjoxNjkzMjI1MjM3fQ.DfHVMGY9X1cE74oD-u34nsxBdMbErVDLshiBx4Jajms",
-        },
+      .post(`${API_URL}/users/login`, {
+        username: username,
+        password: password,
       })
       .then((res) => {
-        if (res.data.success) return res.data.user.username;
-        else throw new Error("SignUp unsucessful!");
+        if (res.data.success) return res.data;
       });
   } catch (error) {
-    console.error("Error registering:", error);
+    console.error("Error Logging in:", error);
+    console.log(error.response.data);
+    return error.response.data
   }
 };
 
@@ -46,3 +45,9 @@ const getThreadsById = async (id) => {
 };
 
 export { logIn, signUp, getThreadsById };
+
+// , {
+//   headers: {
+//     Authorization:
+//       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJpbWFuaGVkZXNoeSIsImlhdCI6MTY5MzExNzIzNywiZXhwIjoxNjkzMjI1MjM3fQ.DfHVMGY9X1cE74oD-u34nsxBdMbErVDLshiBx4Jajms",
+//   },
