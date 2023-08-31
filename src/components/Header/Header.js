@@ -10,7 +10,7 @@ export default function Header() {
     <div className="header">
       <img className="header__menubutton" src={menu} alt="menu button" />
       <Navbar />
-      <NavLink className="header__logo" to="/">
+      <NavLink className="header__logo" to="/threads">
         The BOX!
       </NavLink>
     </div>

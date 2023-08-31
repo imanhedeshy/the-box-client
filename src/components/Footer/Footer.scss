@@ -1,24 +1,24 @@
 @import "../../styles/partials/animations";
 
 .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    &-social {
-        &__icon {
-            width: 2.5rem;
-            margin: .5rem;
+  &-social {
+    &__icon {
+      width: 2.5rem;
+      margin: 0.5rem;
 
-            &:hover {
-                cursor: pointer;
-                animation: tilt-shaking infinite .4s;
-            }
-        }
+      &:hover {
+        cursor: pointer;
+        animation: tilt-shaking infinite 0.4s;
+      }
     }
+  }
 
-    &__copyright {
-        font-size: .75rem;
-        margin: 1rem auto;
-    }
+  &__copyright {
+    font-size: 0.75rem;
+    margin: 1rem auto;
+  }
 }

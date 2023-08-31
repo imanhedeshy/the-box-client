@@ -1,0 +1,23 @@
+.student-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  & > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &::first-line {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &::after {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+}
+

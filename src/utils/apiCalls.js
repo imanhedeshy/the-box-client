@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { getToken, removeToken } from "./storageFuncs";
+
 const API_URL = process.env.REACT_APP_API_URL;
 
 const logIn = async (username, password) => {
@@ -15,7 +17,7 @@ const logIn = async (username, password) => {
   } catch (error) {
     console.error("Error Logging in:", error);
     console.log(error.response.data);
-    return error.response.data
+    return error.response.data;
   }
 };
 
@@ -37,17 +39,20 @@ const signUp = async (username, password, email) => {
 };
 
 const getThreadsById = async (id) => {
+  const token = await getToken();
   try {
-    return await axios.get(`${API_URL}/threads`);
+    return await axios.get(`${API_URL}/threads`, {
+      headers: {
+        Authorization: token,
+      },
+    });
   } catch (error) {
     console.error({ error: "Error fetching threads from the server." });
   }
 };
 
-export { logIn, signUp, getThreadsById };
+const signOut = async () => {
+  removeToken("Token");
+};
 
-// , {
-//   headers: {
-//     Authorization:
-//       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJpbWFuaGVkZXNoeSIsImlhdCI6MTY5MzExNzIzNywiZXhwIjoxNjkzMjI1MjM3fQ.DfHVMGY9X1cE74oD-u34nsxBdMbErVDLshiBx4Jajms",
-//   },
+export { logIn, signUp, getThreadsById, signOut };

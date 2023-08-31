@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { getThreadsById } from "../../utils/apiCalls";
 import timeAgoConverter from "../../utils/timeAgoConverter";
 
@@ -15,6 +17,8 @@ export default function Threads() {
   const [threads, setThreads] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     setIsLoading(true);
     document.title = "The BOX | Threads";
@@ -23,7 +27,12 @@ export default function Threads() {
       const result = await getThreadsById();
       setThreads(result.data);
     };
-    getThreads().then(setIsLoading(false));
+    getThreads()
+      .then(setIsLoading(false))
+      .catch((err) => {
+        console.error(err);
+        navigate("/");
+      });
   }, []);
 
   console.log(threads);

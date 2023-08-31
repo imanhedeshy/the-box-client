@@ -1,0 +1,84 @@
+.update-profile {
+    display: flex;
+    flex-direction: column;
+  
+    &__picture {
+      text-align: center;
+      align-self: center;
+      width: 7.5rem;
+      aspect-ratio: 1;
+      margin: 1rem;
+  
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  
+    &-form {
+      display: flex;
+      flex-direction: column;
+  
+      &__label {
+        display: flex;
+        flex-direction: column;
+  
+        text-transform: uppercase;
+  
+        font-size: 0.75rem;
+        color: lightslategrey;
+  
+        padding-left: 1rem;
+        margin-left: 1rem;
+      }
+  
+      &__input {
+        padding: 0.75rem;
+        border-radius: 0.25rem;
+        border: 0.0625rem solid lightslategrey;
+  
+        width: 100%;
+        margin: 0.25rem 0 0.75rem -1rem;
+  
+        &--textarea {
+          resize: none;
+          height: 6rem;
+        }
+      }
+  
+      &__button {
+        align-self: flex-end;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+  
+        width: 40%;
+        height: 3rem;
+  
+        border-radius: 0.25rem;
+        outline: none;
+        background-color: blue;
+        border: 0.0625rem solid blue;
+  
+        margin: 0.5rem 1rem;
+        padding: 0.5rem;
+  
+        font-size: 1rem;
+        color: white;
+  
+        &--hide {
+          display: none;
+        }
+  
+        &:hover {
+          cursor: pointer;
+          background-color: darkblue;
+        }
+  
+        &:active {
+          background-color: black;
+        }
+      }
+    }
+  }
+  

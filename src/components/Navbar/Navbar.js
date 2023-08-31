@@ -1,8 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
+import { signOut } from "../../utils/apiCalls";
 
 import "./Navbar.scss";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    signOut();
+    navigate("/");
+  };
   return (
     <nav className="navbar">
       <NavLink
@@ -40,6 +48,13 @@ export default function Navbar() {
       >
         Expo
       </NavLink>
+      <span
+        activeClassName="navbar__li--active"
+        className="navbar__li"
+        onClick={handleClick}
+      >
+        Sign Out
+      </span>
     </nav>
   );
 }

@@ -1,7 +1,7 @@
 const setToken = async (token) => {
   try {
     // Removing data from session storage
-    await sessionStorage.removeItem("Token");
+    await removeToken("Token");
 
     // Writing data to session storage
     await sessionStorage.setItem("Token", token);
@@ -25,4 +25,15 @@ const getToken = async () => {
   }
 };
 
-export { setToken, getToken };
+const removeToken = async (token) => {
+  try {
+    // Removing data from session storage
+    await sessionStorage.removeItem("Token");
+    return true;
+  } catch (error) {
+    console.error("Error setting token in session storage:", error);
+    return false;
+  }
+};
+
+export { setToken, getToken, removeToken };

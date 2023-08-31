@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import "./Expo.scss";
 
 import mockUsers from "../../data/mockUsersFprExpo";
 import profilePic from "../../assets/images/images/profile_pic (5).png";
-import { useEffect, useState } from "react";
+import rightArrow from "../../assets/images/icons/right-chevron.png";
 
 export default function Expo() {
   const [userType, setUserType] = useState("");
 
-  document.title = "The BOX | Expo"
+  document.title = "The BOX | Expo";
 
   const filteredUsers = userType
     ? mockUsers.filter((user) => user.userType === userType)
@@ -53,9 +54,6 @@ export default function Expo() {
       <div className="expo__container">
         {filteredUsers.map((user) => (
           <>
-            {/* <Link className="expo-user__show-more" to={`/users/${user.id}`}>
-            + More
-          </Link> */}
             <div className="expo-card">
               <div className="expo-profile">
                 <img
@@ -64,7 +62,7 @@ export default function Expo() {
                   alt="profile"
                 />
                 <h3 className="expo-profile__name">{user.name}</h3>
-                <span className="expo-profile__dexcipline">
+                <span className="expo-profile__discipline">
                   {user.discipline}
                 </span>
                 <span className="expo-profile__cohort">
@@ -92,9 +90,19 @@ export default function Expo() {
                   ))}
                 </div>
               </div>
-            </div>
-            <div className="expo-user__shortcuts">
-              {/* <Link to="">Reusme</Link> */}
+              <div className="expo-shortcuts">
+                <Link
+                  className="expo-shortcuts__link"
+                  to={`/users/${user.username}`}
+                >
+                  View Full Profile
+                  <img
+                    className="expo-shortcuts__chevron"
+                    src={rightArrow}
+                    alt=""
+                  />
+                </Link>
+              </div>
             </div>
           </>
         ))}
