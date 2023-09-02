@@ -91,7 +91,10 @@ export default function SignUpLogIn() {
         formInputs.password.value,
         formInputs.email.value
       );
-      console.log(result);
+      if (result){
+      await setToken(result);
+      navigate("/expo");
+      }
     }
     setFormData(initialFormData);
   };

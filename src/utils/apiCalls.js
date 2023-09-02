@@ -22,20 +22,20 @@ const logIn = async (username, password) => {
 };
 
 const signUp = async (username, password, email) => {
-  try {
-    return await axios
-      .post(`${API_URL}/users/register`, {
-        username: username,
-        email: email,
-        password: password,
-      })
-      .then((res) => {
-        if (res.data.success) return res.data.user.username;
-        else throw new Error("SignUp unsucessful!");
-      });
-  } catch (error) {
-    console.error("Error registering:", error.response.data);
-  }
+  return await axios
+    .post(`${API_URL}/users/register`, {
+      username: username,
+      email: email,
+      password: password,
+    })
+    .then((res) => {
+      console.log(res.data);
+      if (res.data.success) return res.data.token;
+      else throw new Error("SignUp unsucessful!");
+    })
+    .catch((error) => {
+      console.error("Error registering:", error.response.data);
+    });
 };
 
 const getThreadsById = async (id) => {
