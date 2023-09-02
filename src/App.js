@@ -6,18 +6,22 @@ import {
   useLocation,
 } from "react-router-dom";
 
-import SignUpLogIn from "./pages/SignUpLogIn/SignUpLogIn"
-import Profile from "./pages/Profile/Profile"
-import Yearbook from "./pages/Yearbook/Yearbook"
+import generateRandomInCss from "./utils/generateRandomInCss";
+
+import SignUpLogIn from "./pages/SignUpLogIn/SignUpLogIn";
+import Profile from "./pages/Profile/Profile";
+import Yearbook from "./pages/Yearbook/Yearbook";
 import Threads from "./pages/Threads/Threads";
 import Expo from "./pages/Expo/Expo";
 import NotFound from "./components/NotFound/NotFound";
 
-import Header from "./components/Header/Header"
-import Footer from "./components/Footer/Footer"
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import "./App.scss";
 
 function App() {
+  generateRandomInCss();
+
   return (
     <Router className="app">
       <Header />

@@ -87,16 +87,17 @@
     justify-content: space-between;
 
     width: 100%;
-    // aspect-ratio: 1.618;
+    aspect-ratio: 1.618;
 
     margin: 0.25rem auto;
     padding: 0.25rem;
 
-    background-color: aliceblue;
-
-    border: 0.0625rem solid silver;
     border-radius: 0.25rem;
-    box-shadow: 0.0625rem 0.0625rem 0.125rem silver;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background-color: #f3f8ff;
+    }
   }
 
   &-shortcuts {
@@ -113,12 +114,13 @@
       display: flex;
       align-items: center;
       font-size: 0.75rem;
+      color: #1358db !important;
 
       margin-right: 0.5rem;
 
       &:hover {
         text-decoration: underline;
-        font-weight: 600;
+        color: #1358db;
 
         & .expo-shortcuts__chevron {
           animation: bounceRight 1s infinite;
@@ -131,8 +133,9 @@
     }
 
     &__chevron {
-      width: 0.75rem;
-      margin-left: .25rem;
+      width: 0.5rem;
+      margin-left: 0.25rem;
+      margin-bottom: 0.1rem;
     }
   }
 
@@ -197,7 +200,6 @@
     align-content: space-between;
 
     width: 65%;
-    // height: 1s00%;
 
     padding: 1rem 0.5rem;
   }
@@ -223,7 +225,7 @@
       border: 0.0625rem solid lightgray;
       border-radius: 0.25rem;
 
-      background-color: whitesmoke;
+      background-color: white;
 
       &-title,
       &-type {
@@ -253,8 +255,6 @@
 
         transition: all 0.3s ease;
         transform: rotateY(180deg);
-
-        background-color: seashell;
 
         .expo-projects__card-title,
         .expo-projects__card-type {

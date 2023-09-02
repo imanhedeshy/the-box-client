@@ -8,11 +8,15 @@ import facebook from "../../assets/images/logos/facebook.png";
 import telegram from "../../assets/images/logos/telegram.png";
 import whatsapp from "../../assets/images/logos/whatsapp.png";
 import youtube from "../../assets/images/logos/youtube.png";
+import github from "../../assets/images/logos/github (4).png";
 
 export default function Footer() {
   return (
     <div className="footer">
       <div className="footer-social">
+        <NavLink to="https://github.com/imanhedeshy">
+          <img className="footer-social__icon" src={github} alt="" />
+        </NavLink>
         <NavLink to="https://www.linkedin.com/in/imanhedeshy/">
           <img className="footer-social__icon" src={linkedin} alt="" />
         </NavLink>

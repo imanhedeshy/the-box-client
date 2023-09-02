@@ -10,27 +10,27 @@
   z-index: 100;
 
   background-color: white;
-  height: 6rem;
   font-size: 2rem;
   font-weight: 700;
 
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 
-
   &__logo {
+    font-size: 1.25rem;
     text-align: center;
+    margin: 1rem 0;
     &:hover {
-      animation: foldCube infinite 1s;
+      animation: loadingDot infinite 1s;
     }
   }
 
   &__menubutton {
     position: absolute;
-    width: 3rem;
+    width: 2rem;
     left: 1rem;
 
-    transition: all .2s;
+    transition: all 0.2s;
 
     &:hover {
       cursor: pointer;
@@ -43,8 +43,7 @@
     }
 
     &:active {
-      transform: scale(0.8);
+      transform: scale(0.9);
     }
-
   }
 }

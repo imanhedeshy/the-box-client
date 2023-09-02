@@ -5,7 +5,7 @@ import "./Expo.scss";
 
 import mockUsers from "../../data/mockUsersFprExpo";
 import profilePic from "../../assets/images/images/profile_pic (5).png";
-import rightArrow from "../../assets/images/icons/right-chevron.png";
+import rightArrow from "../../assets/images/icons/right-chevron (1).svg";
 
 export default function Expo() {
   const [userType, setUserType] = useState("");

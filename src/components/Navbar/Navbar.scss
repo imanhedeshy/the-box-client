@@ -5,10 +5,13 @@
   justify-content: center;
 
   position: absolute;
-  left: 1rem;
-  top: 4.5rem;
+  left: .75rem;
+  top: 2.5rem;
 
-  background-color: rgba(167, 211, 255, 0.55);
+  background-color: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+  border-radius: .25rem;
 
   &:hover {
     display: flex;
@@ -16,12 +19,15 @@
 
   &__li {
     width: 100%;
-    font-size: 1rem;
+    font-size: .875rem;
+    font-weight: 400;
     padding: 0.5rem 1rem;
 
     &:hover {
       cursor: pointer;
-      background-color: aqua;
+      background-color: #F3F8FF;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
       text-decoration: underline;
       transform: scale(1.05);
     }
