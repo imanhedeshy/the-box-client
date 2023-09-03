@@ -87,5 +87,63 @@
         }
       }
     }
+
+    &__comments {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      border-top: 0.0625rem solid whitesmoke;
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+
+      &-input {
+        width: 95%;
+        padding: 0.5rem;
+        margin: 0 auto 0.5rem auto;
+        border: 0.0625rem solid lightgrey;
+        border-radius: 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 400;
+
+        &::placeholder {
+          color: slategray;
+          font-size: 0.75rem;
+        }
+
+        &:focus {
+          outline: none;
+          border: 0.125rem solid #1358db;
+        }
+      }
+
+      &-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        margin-left: 1rem;
+
+        border-left: 0.0625rem solid silver;
+      }
+
+      &-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        padding: 0.25rem 0.5rem;
+        margin: 0.25rem 0;
+      }
+
+      &-user,
+      &-content {
+        font-size: 0.9rem;
+      }
+
+      &-user {
+        font-weight: 600;
+      }
+    }
   }
 }

@@ -40,11 +40,13 @@ const signUp = async (username, password, email) => {
 const getThreadsById = async (id) => {
   const token = await getToken();
   try {
-    return await axios.get(`${API_URL}/threads`, {
+    const result = await axios.get(`${API_URL}/threads`, {
       headers: {
         Authorization: token,
       },
     });
+    console.log(result);
+    return result;
   } catch (error) {
     console.error({ error: "Error fetching threads from the server." });
   }
@@ -65,8 +67,47 @@ const createThread = async (content) => {
   }
 };
 
+const likeThreadById = async (thread_id) => {
+  const body = { thread_id: thread_id };
+  const headers = { Authorization: `${await getToken()}` };
+
+  try {
+    const result = await axios.put(`${API_URL}/threads`, body, {
+      headers,
+    });
+    console.log(result);
+  } catch (error) {
+    console.error("Error sending PUT request to /threads:", error);
+  }
+};
+
+const deleteThreadById = async (thread_id) => {
+  const headers = { Authorization: `${await getToken()}` };
+
+  try {
+    const result = await axios.delete(`${API_URL}/threads/${thread_id}`, {
+      headers,
+    });
+    console.log(result);
+  } catch (error) {
+    console.error(`Error deleting thread with ID ${thread_id}:`, error);
+    throw error;
+  }
+};
+
+const createCommentbyId = async (thread_id) => {};
+
 const signOut = async () => {
   removeToken("Token");
 };
 
-export { logIn, signUp, getThreadsById, signOut, createThread };
+export {
+  logIn,
+  signUp,
+  getThreadsById,
+  signOut,
+  createThread,
+  likeThreadById,
+  deleteThreadById,
+  createCommentbyId,
+};
