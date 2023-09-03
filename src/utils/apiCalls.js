@@ -45,7 +45,6 @@ const getThreadsById = async (id) => {
         Authorization: token,
       },
     });
-    console.log(result);
     return result;
   } catch (error) {
     console.error({ error: "Error fetching threads from the server." });
@@ -95,7 +94,19 @@ const deleteThreadById = async (thread_id) => {
   }
 };
 
-const createCommentbyId = async (thread_id) => {};
+const createCommentbyId = async (thread_id, content) => {
+  const headers = { Authorization: `${await getToken()}` };
+  const body = { content: content };
+
+  try {
+    const result = await axios.post(`${API_URL}/threads/${thread_id}`, body, {
+      headers,
+    });
+    return result.data;
+  } catch (error) {
+    console.error("Error sending POST request to /threads/:id:", error);
+  }
+};
 
 const signOut = async () => {
   removeToken("Token");

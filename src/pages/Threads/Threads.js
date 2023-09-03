@@ -21,7 +21,7 @@ import comment from "../../assets/images/icons/reply-message.png";
 
 export default function Threads() {
   const [threads, setThreads] = useState([]);
-  const [threadComments, setThreadComments] = useState([]);
+  const [you, setYou] = useState(null);
   const [openedComments, setOpenedComments] = useState({});
 
   const [isLoading, setIsLoading] = useState(true);
@@ -34,8 +34,8 @@ export default function Threads() {
 
     const getThreads = async () => {
       const result = await getThreadsById();
-      console.log(result);
-      setThreads(result.data);
+      setThreads(result.data.threads);
+      setYou(result.data.you);
     };
     getThreads()
       .then(setIsLoading(false))
@@ -46,14 +46,12 @@ export default function Threads() {
   }, []);
 
   const handleThreadInput = async (event) => {
-    if (event.target.value) {
-      if (event.key === "Enter" || event.keyCode === 13) {
-        const inputContent = event.target.value;
-        const createdThread = await createThread(inputContent);
-
-        setThreads((prevThreads) => [createdThread, ...prevThreads]);
-        event.target.value = "";
-      }
+    if (!event.target.value) return;
+    if (event.key === "Enter" || event.keyCode === 13) {
+      const inputContent = event.target.value;
+      const createdThread = await createThread(inputContent);
+      setThreads((prevThreads) => [createdThread, ...prevThreads]);
+      event.target.value = "";
     }
   };
 
@@ -89,34 +87,35 @@ export default function Threads() {
   };
 
   const handleCommentInput = async (event, thread_id, user_name) => {
-    if (event.target.value) {
-      if (event.key === "Enter" || event.keyCode === 13) {
-        const inputContent = event.target.value;
+    if (!event.target.value) return;
+    if (event.key === "Enter" || event.keyCode === 13) {
+      const inputContent = event.target.value;
 
-        const createdComment = await createCommentbyId(thread_id, inputContent);
-
-        // Create a new comment object
+      try {
+        const result = await createCommentbyId(thread_id, inputContent);
         const newComment = {
           content: inputContent,
-          user_name: user_name,
+          user_name: result.user_name,
         };
 
-        // Find the thread index
-        const threadIndex = threads.findIndex(
-          (thread) => thread.thread_id === thread_id
-        );
-
-        // Clone the threads array and modify the specific thread's comments
-        const updatedThreads = [...threads];
-        updatedThreads[threadIndex].comments = [
-          newComment,
-          ...updatedThreads[threadIndex].comments,
-        ];
-
-        // Update the state with the modified threads array
-        setThreads(updatedThreads);
+        setThreads((prevThreads) => {
+          return prevThreads.map((thread) => {
+            if (thread.thread_id === thread_id) {
+              return {
+                ...thread,
+                comments: [
+                  newComment,
+                  ...(thread.comments ? thread.comments : []),
+                ],
+              };
+            }
+            return thread;
+          });
+        });
 
         event.target.value = "";
+      } catch (error) {
+        console.error("Error adding comment:", error);
       }
     }
   };
@@ -138,7 +137,7 @@ export default function Threads() {
         const isCommentOpen = openedComments[thread.thread_id];
 
         return (
-          <div className="threads-wrapper" key={thread.id}>
+          <div className="threads-wrapper" key={thread.thread_id}>
             <div className="threads-wrapper__header">
               <h4 className="threads-wrapper__username">{thread.user_name}</h4>
               <span className="threads-wrapper__timestamp">
@@ -164,12 +163,16 @@ export default function Threads() {
                 ? thread.comments.filter((comment) => comment.content !== null)
                     .length
                 : 0}
-              <img
-                className="threads-wrapper__actions-icon"
-                src={trash}
-                alt=""
-                onClick={() => handleDelete(thread.thread_id)}
-              />
+              {thread.user_username === you ? (
+                <img
+                  className="threads-wrapper__actions-icon threads-wrapper__actions-icon--delete"
+                  src={trash}
+                  alt=""
+                  onClick={() => handleDelete(thread.thread_id)}
+                />
+              ) : (
+                ""
+              )}
             </div>
             {isCommentOpen && (
               <div className="threads-wrapper__comments">
@@ -191,7 +194,7 @@ export default function Threads() {
                             className="threads-wrapper__comments-item"
                           >
                             <span className="threads-wrapper__comments-user">
-                              {comment.user_name}:&nbsp;
+                              {comment.user_name.split(" ")[0]}:&nbsp;
                             </span>
                             <p className="threads-wrapper__comments-content">
                               {comment.content}

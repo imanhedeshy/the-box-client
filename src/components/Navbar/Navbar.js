@@ -13,46 +13,22 @@ export default function Navbar() {
   };
   return (
     <nav className="navbar">
-      <NavLink
-        activeClassName="navbar__li--active"
-        className="navbar__li"
-        to="/users/imanhedeshy"
-      >
+      <NavLink className="navbar__li" to="/users/imanhedeshy">
         Your Profile
       </NavLink>
-      <NavLink
-        activeClassName="navbar__li--active"
-        className="navbar__li"
-        to="/yearbook"
-      >
+      <NavLink className="navbar__li" to="/yearbook">
         Yearbook
       </NavLink>
-      <NavLink
-        activeClassName="navbar__li--active"
-        className="navbar__li"
-        to="/threads"
-      >
+      <NavLink className="navbar__li" to="/threads">
         Threads
       </NavLink>
-      <NavLink
-        activeClassName="navbar__li--active"
-        className="navbar__li"
-        to="/chat"
-      >
+      <NavLink className="navbar__li" to="/chat">
         Chat
       </NavLink>
-      <NavLink
-        activeClassName="navbar__li--active"
-        className="navbar__li"
-        to="/expo"
-      >
+      <NavLink className="navbar__li" to="/expo">
         Expo
       </NavLink>
-      <span
-        activeClassName="navbar__li--active"
-        className="navbar__li"
-        onClick={handleClick}
-      >
+      <span className="navbar__li" onClick={handleClick}>
         Sign Out
       </span>
     </nav>

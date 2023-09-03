@@ -82,6 +82,11 @@
         margin: auto 0.5rem;
         filter: opacity(0.5);
 
+        &--delete {
+          position: absolute;
+          right: 7rem;
+        }
+
         &:hover {
           cursor: pointer;
         }
@@ -130,10 +135,14 @@
       &-item {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        // align-items: center;
 
         padding: 0.25rem 0.5rem;
         margin: 0.25rem 0;
+
+        &:hover {
+          background-color: white;
+        }
       }
 
       &-user,
@@ -143,6 +152,11 @@
 
       &-user {
         font-weight: 600;
+        width: 20%;
+      }
+
+      &-content {
+        width: 100%;
       }
     }
   }
