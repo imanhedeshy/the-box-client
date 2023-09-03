@@ -5,6 +5,9 @@
   flex-direction: column;
   justify-content: center;
 
+  margin-left: -1rem;
+  width: calc(100% + 2rem);
+
   &__title {
     align-self: center;
     margin: 1rem;
@@ -14,23 +17,33 @@
   }
 
   &__input {
-    width: 100%;
+    width: 90%;
     padding: 1.5rem;
-    margin: 0 auto 1rem auto;
+    margin: 0 auto 0.5rem auto;
     border: 0.0625rem solid lightgrey;
-    border-radius: 0.25rem;
+    border-radius: 0.75rem;
     font-size: 1rem;
     font-weight: 400;
+
     &::placeholder {
       color: slategray;
+    }
+
+    &:focus {
+      outline: none;
+      border: 0.125rem solid #1358db;
     }
   }
 
   &-wrapper {
     display: flex;
     flex-direction: column;
-    padding: 0.75rem 0.5rem;
+    padding: 0.5rem 1rem;
     border-bottom: 0.0625rem solid lightgray;
+
+    &:hover {
+      background-color: #f3f8ff;
+    }
 
     &__header {
       display: flex;
@@ -40,7 +53,7 @@
 
     &__username {
       flex: 1;
-      padding: .5rem 0;
+      padding: 0.5rem 0;
     }
 
     &__timestamp {
@@ -49,7 +62,8 @@
     }
 
     &__content {
-        margin-bottom: .75rem;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
     }
 
     &__actions {
@@ -66,7 +80,7 @@
       &-icon {
         width: 1.25rem;
         margin: auto 0.5rem;
-        filter: opacity(.5);
+        filter: opacity(0.5);
 
         &:hover {
           cursor: pointer;

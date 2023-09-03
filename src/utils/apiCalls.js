@@ -29,7 +29,6 @@ const signUp = async (username, password, email) => {
       password: password,
     })
     .then((res) => {
-      console.log(res.data);
       if (res.data.success) return res.data.token;
       else throw new Error("SignUp unsucessful!");
     })
@@ -51,8 +50,23 @@ const getThreadsById = async (id) => {
   }
 };
 
+const createThread = async (content) => {
+  // const body = { user_id: thread.userId, content: thread.content };
+  const body = { content: content };
+  const headers = { Authorization: `${await getToken()}` };
+  try {
+    return await axios
+      .post(`${API_URL}/threads`, body, { headers })
+      .then((res) => {
+        return res.data;
+      });
+  } catch (error) {
+    console.error("Error connecting to the server:", error);
+  }
+};
+
 const signOut = async () => {
   removeToken("Token");
 };
 
-export { logIn, signUp, getThreadsById, signOut };
+export { logIn, signUp, getThreadsById, signOut, createThread };

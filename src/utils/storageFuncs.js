@@ -17,7 +17,6 @@ const getToken = async () => {
   try {
     // Reading data from session storage
     const storedToken = await sessionStorage.getItem("Token");
-    console.log(storedToken);
     return storedToken;
   } catch (error) {
     console.error("Error getting token from session storage:", error);

@@ -91,10 +91,10 @@ export default function SignUpLogIn() {
         formInputs.password.value,
         formInputs.email.value
       );
-      if (result){
+      if (result) {
       await setToken(result);
       navigate("/expo");
-      }
+      } else throw new Error("No token received from server!")
     }
     setFormData(initialFormData);
   };
