@@ -3,9 +3,6 @@ import { useState } from "react";
 
 import "./PartnerProfile.scss";
 
-import profileBkg from "../../assets/images/images/microsoft-bgimage.jpg";
-import profilePic from "../../assets/images/images/microsoft-logo.jpg";
-
 import emailIcon from "../../assets/images/icons/email (1).png";
 import phoneIcon from "../../assets/images/icons/telephone.png";
 import websiteIcon from "../../assets/images/icons/globe.png";
@@ -24,16 +21,28 @@ import sassIcon from "../../assets/images/icons/sass.png";
 import tsIcon from "../../assets/images/icons/typescript.png";
 import cssIcon from "../../assets/images/icons/css-3.png";
 
-export default function PartnerProfile({ partner }) {
+export default function PartnerProfile({ partner, user }) {
+  console.log(partner, user);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const navigate = useNavigate();
 
+  const techIcons = {
+    javascript: jsIcon,
+    react: reactIcon,
+    nodejs: nodeIcon,
+    typescript: tsIcon,
+    c: cIcon,
+    github: githubLogo,
+    mysql: mySqlIcon,
+    html: htmlIcon,
+    css: cssIcon,
+    sass: sassIcon,
+  };
+
   const handleClick = (event) => {
     navigate(`/users/${"imanhedeshy"}/edit`);
   };
-
-  
 
   return (
     <div className="partner-profile">
@@ -48,12 +57,16 @@ export default function PartnerProfile({ partner }) {
           alt="partner-profile"
           src={partner.profilePic}
         />
-        <span
-          className="partner-profile-info__edit-button"
-          onClick={handleClick}
-        >
-          Edit Profile
-        </span>
+        {partner.username === user.username ? (
+          <span
+            className="partner-profile-info__edit-button"
+            onClick={handleClick}
+          >
+            Edit Profile
+          </span>
+        ) : (
+          ""
+        )}
         <div className="partner-profile-info__detail">
           <span className="partner-profile-info__detail-name">
             {partner.name}
@@ -153,7 +166,7 @@ export default function PartnerProfile({ partner }) {
           </div>
         </div>
       </div>
-      <h3 className="partner-profile-hero-title">Events</h3>
+      <h3 className="partner-profile-hero-title">Videos</h3>
       <div className="partner-profile-hero">
         <iframe
           className="partner-profile-hero__video"
@@ -172,82 +185,58 @@ export default function PartnerProfile({ partner }) {
           allowfullscreen
         />
       </div>
-
+      <h3 className="partner-profile-hero-title">Opportunities</h3>
       <div className="partner-profile-jobs">
         <div className="partner-profile-jobs__list">
           <h3 className="partner-profile-jobs__list-title">Internships</h3>
-          {partner.jobs.map((job) => (
-            <div className="partner-profile-jobs__list-items">
-              <div className="partner-profile-jobs__list-item">
-                <h4>BrainStationFlix</h4>
-              </div>
-              <div className="partner-profile-jobs__list-item">
-                <h4>MooCooCaw</h4>
-              </div>
-              <div className="partner-profile-jobs__list-item">
-                <h4>TritonPrivacyVault</h4>
-              </div>
-            </div>
-          ))}
+          <div className="partner-profile-jobs__list-items">
+            {partner.jobs
+              .filter((job) => job.type === "internship")
+              .map((job) => (
+                <div className="partner-profile-jobs__list-item" key={job.id}>
+                  <h4>{job.title}</h4>
+                  <img src={job.imageSrc} alt="" />
+                  <p>{job.description}</p>
+                  <a href={job.link}>Apply here</a>
+                </div>
+              ))}
+          </div>
         </div>
         <div className="partner-profile-jobs__list">
           <h3 className="partner-profile-jobs__list-title">
             Full-time Opportunities
           </h3>
-          {partner.jobs.map((job) => (
-            <div className="partner-profile-jobs__list-items">
-              <div className="partner-profile-jobs__list-item">
-                <h4>BandSite</h4>
-              </div>
-              <div className="partner-profile-jobs__list-item">
-                <h4>BrainFlix</h4>
-              </div>
-              <div className="partner-profile-jobs__list-item">
-                <h4>InStock</h4>
-              </div>
-            </div>
-          ))}
+          <div className="partner-profile-jobs__list-items">
+            {partner.jobs
+              .filter((job) => job.type === "full-time")
+              .map((job) => (
+                <div className="partner-profile-jobs__list-item" key={job.id}>
+                  <h4>{job.title}</h4>
+                  <img src={job.imageSrc} alt="" />
+                  <p>{job.description}</p>
+                  <a href={job.link}>Apply here</a>
+                </div>
+              ))}
+          </div>
         </div>
       </div>
-
       <div className="partner-profile-skills">
         <h2 className="partner-profile-skills__title">
           Required Technical Skills
         </h2>
-        {partner.techStacks.map((stack) => (
-          <div className="partner-profile-skills__list">
-            <div className="partner-profile-skills__list-item">
-              <img src={jsIcon} alt="JS logo" />
+        <div className="partner-profile-skills__list">
+          {partner.techStacks.map((stack) => (
+            <div
+              className="partner-profile-skills__list-item"
+              key={stack.tech_stack}
+            >
+              <img
+                src={techIcons[stack.tech_stack]}
+                alt={`${stack.tech_stack} logo`}
+              />
             </div>
-            <div className="partner-profile-skills__list-item">
-              <img src={reactIcon} alt="React logo" />
-            </div>
-            <div className="partner-profile-skills__list-item">
-              <img src={nodeIcon} alt="Node logo" />
-            </div>
-            <div className="partner-profile-skills__list-item">
-              <img src={tsIcon} alt="Node logo" />
-            </div>
-            <div className="partner-profile-skills__list-item">
-              <img src={cIcon} alt="Node logo" />
-            </div>
-            <div className="partner-profile-skills__list-item">
-              <img src={githubLogo} alt="Node logo" />
-            </div>
-            <div className="partner-profile-skills__list-item">
-              <img src={mySqlIcon} alt="Node logo" />
-            </div>
-            <div className="partner-profile-skills__list-item">
-              <img src={htmlIcon} alt="Node logo" />
-            </div>
-            <div className="partner-profile-skills__list-item">
-              <img src={cssIcon} alt="Node logo" />
-            </div>
-            <div className="partner-profile-skills__list-item">
-              <img src={sassIcon} alt="Node logo" />
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

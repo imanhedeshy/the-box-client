@@ -12,6 +12,7 @@ const logIn = async (username, password) => {
         password: password,
       })
       .then((res) => {
+        console.log(res.data);
         if (res.data.success) return res.data;
       });
   } catch (error) {
@@ -29,12 +30,28 @@ const signUp = async (username, password, email) => {
       password: password,
     })
     .then((res) => {
-      if (res.data.success) return res.data.token;
-      else throw new Error("SignUp unsucessful!");
+      // if (res.data.success) return res.data;
+      // else throw new Error("SignUp unsucessful!");
+      return res.data;
     })
     .catch((error) => {
-      console.error("Error registering:", error.response.data);
+      // console.error("Error registering:", error.response.data);
+      return error.response.data;
     });
+};
+
+const getStudentByUsername = async (username) => {
+  const token = await getToken();
+  try {
+    const result = await axios.get(`${API_URL}/users/${username}`, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    return result;
+  } catch (error) {
+    console.error({ error: "Error fetching threads from the server." });
+  }
 };
 
 const getThreadsById = async (id) => {
@@ -121,4 +138,5 @@ export {
   likeThreadById,
   deleteThreadById,
   createCommentbyId,
+  getStudentByUsername,
 };

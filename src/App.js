@@ -24,29 +24,51 @@ import "./App.scss";
 function App() {
   generateRandomInCss();
 
-  const [userType, setUserType] = useState("");
+  const [selectedUserType, setSelectedUserType] = useState("");
+
+  const [user, setUser] = useState({
+    type: "",
+    name: "",
+    username: "",
+    id: "",
+  });
+
+  // To update a specific property of the user object
+  // setUser({
+  //   ...user,
+  //   name: "New Name",
+  // });
 
   return (
     <Router className="app">
       <Header />
       <div className="pages">
         <Routes>
-          <Route path="/" element={<SignUpLogIn />} />
-          <Route path="/login" element={<SignUpLogIn />} />
-          <Route path="/signup" element={<SignUpLogIn />} />
+          <Route
+            path="/"
+            element={<SignUpLogIn user={user} setUser={setUser} />}
+          />
+          <Route
+            path="/login"
+            element={<SignUpLogIn user={user} setUser={setUser} />}
+          />
+          <Route
+            path="/signup"
+            element={<SignUpLogIn user={user} setUser={setUser} />}
+          />
           <Route
             path="/users/:username"
-            element={<Profile userType={userType} setUserType={setUserType} />}
+            element={<Profile selectedUserType={selectedUserType} setSelectedUserType={setSelectedUserType} user={user} />}
           />
           <Route
             path="/users/:username/edit"
-            element={<Profile userType={userType} setUserType={setUserType} />}
+            element={<Profile user={user} setUser={setUser} />}
           />
           <Route path="/yearbook" element={<Yearbook />} />
           <Route path="/threads" element={<Threads />} />
           <Route
             path="/expo"
-            element={<Expo userType={userType} setUserType={setUserType} />}
+            element={<Expo selectedUserType={selectedUserType} setSelectedUserType={setSelectedUserType} />}
           />
           <Route path="/chat" element={<Chat />} />
           <Route path="/*" element={<NotFound />} />

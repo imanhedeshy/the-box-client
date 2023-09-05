@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import "./Expo.scss";
 
@@ -7,17 +7,18 @@ import mockUsers from "../../data/mockUsersFprExpo";
 import profilePic from "../../assets/images/images/profile_pic (5).png";
 import rightArrow from "../../assets/images/icons/right-chevron (1).svg";
 
-export default function Expo({ userType, setUserType }) {
+export default function Expo({ selectedUserType, setSelectedUserType }) {
   document.title = "The BOX | Expo";
 
-  const filteredUsers = userType
-    ? mockUsers.filter((user) => user.userType === userType)
+  
+  const filteredUsers = selectedUserType
+    ? mockUsers.filter((user) => user.userType === selectedUserType)
     : mockUsers;
 
   const handleClick = (event) => {
-    if (event.target.innerText === "Students") setUserType("student");
-    if (event.target.innerText === "Educators") setUserType("educator");
-    if (event.target.innerText === "Partners") setUserType("partner");
+    if (event.target.innerText === "Students") setSelectedUserType("student");
+    if (event.target.innerText === "Educators") setSelectedUserType("educator");
+    if (event.target.innerText === "Partners") setSelectedUserType("partner");
   };
 
   return (
@@ -27,7 +28,7 @@ export default function Expo({ userType, setUserType }) {
         <span
           onClick={handleClick}
           className={`expo-tabs__category ${
-            userType === "student" ? "expo-tabs__category--active" : ""
+            selectedUserType === "student" ? "expo-tabs__category--active" : ""
           }`}
         >
           Students
@@ -35,7 +36,7 @@ export default function Expo({ userType, setUserType }) {
         <span
           onClick={handleClick}
           className={`expo-tabs__category ${
-            userType === "educator" ? "expo-tabs__category--active" : ""
+            selectedUserType === "educator" ? "expo-tabs__category--active" : ""
           }`}
         >
           Educators
@@ -43,7 +44,7 @@ export default function Expo({ userType, setUserType }) {
         <span
           onClick={handleClick}
           className={`expo-tabs__category ${
-            userType === "partner" ? "expo-tabs__category--active" : ""
+            selectedUserType === "partner" ? "expo-tabs__category--active" : ""
           }`}
         >
           Partners

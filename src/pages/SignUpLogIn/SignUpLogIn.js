@@ -16,7 +16,7 @@ import "./SignUpLogIn.scss";
 import logo from "../../assets/images/logos/theboxlogo.png";
 import { setToken } from "../../utils/storageFuncs";
 
-export default function SignUpLogIn() {
+export default function SignUpLogIn({ user, setUser }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isFound, setIsFound] = useState(true);
   const [isLogIn, setIsLogIn] = useState(true);
@@ -61,42 +61,90 @@ export default function SignUpLogIn() {
     navigate("/signup");
   };
 
+  /* // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   setFormData({
+  //     username: event.target.username.value,
+  //     email: event.target.email.value,
+  //     password: event.target.password.value,
+  //     confirmPassword: event.target.confirmPassword.value,
+  //   });
+
+  //   const submitButton = event.nativeEvent.submitter.name;
+  //   const formInputs = event.target;
+
+  //   if (submitButton === "log-in") {
+  //     const result = await logIn(
+  //       formInputs.username.value,
+  //       formInputs.password.value
+  //     );
+  //     if (result.success) {
+  //       const tokenSet = await setToken(result.token);
+  //       if (tokenSet) navigate("/expo");
+  //     } else if (!result.success) {
+  //       console.log(result.error);
+  //       setLoginError(result.error);
+  //       return;
+  //     }
+  //   } else {
+  //     const result = await signUp(
+  //       formInputs.username.value,
+  //       formInputs.password.value,
+  //       formInputs.email.value
+  //     );
+  //     if (!result.success) {
+  //       console.error(result.error);
+  //       return;
+  //     } else if (result.success) {
+  //       await setToken(result.token);
+  //       navigate("/expo");
+  //     } else throw new Error("No token received from server!");
+  //   }
+  //   setFormData(initialFormData);
+  // };*/
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setFormData({
-      username: event.target.username.value,
-      email: event.target.email.value,
-      password: event.target.password.value,
-      confirmPassword: event.target.confirmPassword.value,
-    });
+    const { username, email, password, confirmPassword } = event.target;
 
-    const submitButton = event.nativeEvent.submitter.name;
-    const formInputs = event.target;
-
-    if (submitButton === "log-in") {
-      const result = await logIn(
-        formInputs.username.value,
-        formInputs.password.value
-      );
-      if (result.success) {
-        const tokenSet = await setToken(result.token);
-        if (tokenSet) navigate("/expo");
-      } else if (!result.success) {
-        console.log(result.error);
-        setLoginError(result.error);
+    // Validate form data
+    /* if (!isLogIn) {
+      if (
+        !isValidEmail(email.value) ||
+        !isStrong(password.value) ||
+        !passwordsMatch(password.value, confirmPassword.value)
+      ) {
+        setLoginError("Invalid email, password, or passwords do not match.");
+        return;
       }
     } else {
-      const result = await signUp(
-        formInputs.username.value,
-        formInputs.password.value,
-        formInputs.email.value
-      );
-      if (result) {
-      await setToken(result);
+      if (
+        !isValidEmail(email.value) ||
+        !isStrong(password.value) ||
+        !passwordsMatch(password.value, confirmPassword.value)
+      ) {
+        setLoginError("Invalid email, password, or passwords do not match.");
+        return;
+      }
+    }*/
+
+    const result = isLogIn
+      ? await logIn(username.value, password.value)
+      : await signUp(username.value, password.value, email.value);
+    console.log(result);
+    if (result.success) {
+      await setToken(result.token);
+      setUser({
+        id: result.id,
+        name: result.name,
+        username: result.username,
+        type: result.user_type || "student",
+      });
       navigate("/expo");
-      } else throw new Error("No token received from server!")
+    } else {
+      console.error(result.error);
+      setLoginError(result.error);
     }
-    setFormData(initialFormData);
   };
 
   return (
@@ -122,6 +170,7 @@ export default function SignUpLogIn() {
               </span>
             </div>
           </article>
+          {/* <form onSubmit={handleSubmit} className="signup-login-form"> */}
           <form onSubmit={handleSubmit} className="signup-login-form">
             <label className="signup-login-form__label" htmlFor="username">
               <input
@@ -177,6 +226,15 @@ export default function SignUpLogIn() {
                 onChange={handleChange}
               />
             </label>
+            {/* <button
+              className={`signup-login-form__button ${
+                !isLogIn ? "signup-login-form__button--hide" : ""
+              }`}
+              name="log-in"
+            >
+              Log In
+            </button> */}
+            {loginError && <div style={{ color: "red" }}>{loginError}</div>}
             <button
               className={`signup-login-form__button ${
                 !isLogIn ? "signup-login-form__button--hide" : ""

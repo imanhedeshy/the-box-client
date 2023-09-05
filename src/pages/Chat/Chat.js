@@ -6,9 +6,11 @@ import "./Chat.scss";
 import userPic from "../../assets/images/images/profile_pic (4).png";
 
 export default function Chat() {
+  const SOCKET_URL = process.env.REACT_APP_SOCKET_URL;
+
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
-  const [username, setUsername] = useState("John Doe"); // Update this with the actual username
+  const [username, setUsername] = useState("Iman");
 
   const messagesEndRef = useRef(null);
 
@@ -17,7 +19,7 @@ export default function Chat() {
   };
 
   useEffect(() => {
-    const socket = io("http://localhost:5050");
+    const socket = io(SOCKET_URL);
 
     const onChatMessage = (data) => {
       setMessages((messages) => [
@@ -39,7 +41,9 @@ export default function Chat() {
 
     socket.on("chat message", onChatMessage);
     socket.on("chat history", onChatHistory);
+
     scrollToBottom();
+
     return () => {
       socket.off("chat message", onChatMessage);
       socket.off("chat history", onChatHistory);
@@ -49,8 +53,10 @@ export default function Chat() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (input) {
-      const socket = io("http://localhost:5050");
+      const socket = io(SOCKET_URL);
+
       socket.emit("chat message", { username, message: input });
+
       setInput("");
     }
   };

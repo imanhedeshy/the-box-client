@@ -3,9 +3,6 @@ import { useState } from "react";
 
 import "./StudentProfile.scss";
 
-import profileBkg from "../../assets/images/images/blue-polygon-dark-background-social-template_53876-116080.webp";
-import profilePic from "../../assets/images/images/profile_pic (2).png";
-
 import emailIcon from "../../assets/images/icons/email (1).png";
 import phoneIcon from "../../assets/images/icons/telephone.png";
 import slackIcon from "../../assets/images/icons/slack (1).png";
@@ -24,10 +21,24 @@ import sassIcon from "../../assets/images/icons/sass.png";
 import tsIcon from "../../assets/images/icons/typescript.png";
 import cssIcon from "../../assets/images/icons/css-3.png";
 
-export default function StudentProfile() {
-  const [isExpanded, setIsExpanded] = useState(false);
+export default function StudentProfile({ student, user }) {
 
+  console.log(student);
+  const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
+
+  const techIcons = {
+    javascript: jsIcon,
+    typescript: tsIcon,
+    react: reactIcon,
+    nodejs: nodeIcon,
+    github: githubLogo,
+    mysql: mySqlIcon,
+    html: htmlIcon,
+    css: cssIcon,
+    sass: sassIcon,
+    c: cIcon,
+  };
 
   const handleClick = (event) => {
     navigate(`/users/${"imanhedeshy"}/edit`);
@@ -39,12 +50,12 @@ export default function StudentProfile() {
         <img
           className="student-profile-info__background"
           alt="background banner"
-          src={profileBkg}
+          src={student.backgroundImage}
         />
         <img
           className="student-profile-info__pic"
           alt="student-profile"
-          src={profilePic}
+          src={student.profilePic}
         />
         <span
           className="partner-profile-info__edit-button"
@@ -54,19 +65,19 @@ export default function StudentProfile() {
         </span>
         <div className="student-profile-info__detail">
           <span className="student-profile-info__detail-name">
-            {"Iman Hedeshy"}
+            {student.name}
           </span>
           <span className="student-profile-info__detail-headline">
-            {"The strongest developer of Asgard!"}
+            {student.headline}
           </span>
           <span className="student-profile-info__detail-discipline">
-            {"Software Engineering"}
+            {student.discipline}
           </span>
           <span className="student-profile-info__detail-cohortname">
-            {"The Namless '23"}
+            {student.cohortName}
           </span>
           <span className="student-profile-info__detail-cohort">
-            {"Online"} - {"Jun 23"}
+            {student.cohort} - {student.cohortDate}
           </span>
           <span className="student-profile-info__detail-connections">
             {(2_246).toLocaleString("en-US")} connections
@@ -83,50 +94,48 @@ export default function StudentProfile() {
                 setIsExpanded(!isExpanded);
               }}
             >
-              {
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec in efficitur leo. Maecenas non felis facilisis, tristique quam vel, accumsan libero. Curabitur at tristique metus, nec lacinia est. Integer nec odio praesent libero lacinia ante."
-              }
+              {student.bio}
             </p>
           </p>
         </div>
         <div className="student-profile-info__contact">
           <Link
             className="student-profile-info__contact-item"
-            to={`mailto:${"iman.hedeshy@gmail.com"}`}
+            to={`mailto:${student.email}`}
           >
             <img
               className="student-profile-info__contact-icon"
               src={emailIcon}
               alt=""
             />
-            {"iman.hedeshy@gmail.com"}
+            {student.email}
           </Link>
           <Link
             className="student-profile-info__contact-item"
-            to={`tel:${"+14169394969"}`}
+            to={`tel:${student.phoneNumber}`}
           >
             <img
               className="student-profile-info__contact-icon"
               src={phoneIcon}
               alt=""
             />
-            {"+1 (416) 939-4969"}
+            {student.phoneNumber}
           </Link>
           <Link
             className="student-profile-info__contact-item"
-            to={`slack://user?team=${"T3N0S87QD"}&id=${"D05DD8CM00J"}`}
+            to={student.slack}
           >
             <img
               className="student-profile-info__contact-icon"
               src={slackIcon}
               alt=""
             />
-            {"Iman Hedeshy"}
+            {student.name}
           </Link>
         </div>
         <div className="student-profile-info__links">
           <Link
-            to={"http://hedeshy.ca"}
+            to={student.website}
             className="student-profile-info__links-item"
           >
             <img
@@ -136,7 +145,7 @@ export default function StudentProfile() {
             />
           </Link>
           <Link
-            to={"https://www.linkedin.com/in/imanhedeshy/"}
+            to={student.linkedin}
             className="student-profile-info__links-item"
           >
             <img
@@ -146,7 +155,7 @@ export default function StudentProfile() {
             />
           </Link>
           <Link
-            to={"https://github.com/imanhedeshy"}
+            to={student.github}
             className="student-profile-info__links-item"
           >
             <img
@@ -163,7 +172,7 @@ export default function StudentProfile() {
       <div className="student-profile-hero">
         <iframe
           className="student-profile-hero__video"
-          src="https://share.synthesia.io/embeds/videos/a5b86147-cae2-4ef0-8b3a-e2d246a7c3be"
+          src={student.video1}
           loading="lazy"
           title="The Box video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -171,7 +180,7 @@ export default function StudentProfile() {
         />
         <iframe
           className="student-profile-hero__video"
-          src="https://share.synthesia.io/embeds/videos/77f00559-9513-47a0-9318-0906650c6959"
+          src={student.video2}
           loading="lazy"
           title="The Box video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -180,26 +189,31 @@ export default function StudentProfile() {
       </div>
       <div className="student-profile-projects">
         <h2 className="student-profile-projects__title">Portfolio</h2>
-        <div className="student-profile-projects__capstone">
-          <h3 className="student-profile-projects__capstone-title">
-            Capstone Project
-          </h3>
-          <div className="student-profile-projects__capstone-item">
-            <h3>The BOX!</h3>
-          </div>
-        </div>
+        {student.projects.map((project) => {
+          if (project.type === "capstone") {
+            return (
+              <div className="student-profile-projects__capstone">
+                <h3 className="student-profile-projects__capstone-title">
+                  Capstone Project
+                </h3>
+                <div className="student-profile-projects__capstone-item">
+                  <h3>{project.title}</h3>
+                </div>
+              </div>
+            );
+          }
+          return null;
+        })}
         <div className="student-profile-projects__list">
           <h3 className="student-profile-projects__list-title">Hackathons</h3>
           <div className="student-profile-projects__list-items">
-            <div className="student-profile-projects__list-item">
-              <h4>BrainStationFlix</h4>
-            </div>
-            <div className="student-profile-projects__list-item">
-              <h4>MooCooCaw</h4>
-            </div>
-            <div className="student-profile-projects__list-item">
-              <h4>TritonPrivacyVault</h4>
-            </div>
+            {student.projects
+              .filter((project) => project.type === "hackathon")
+              .map((project) => (
+                <div className="student-profile-projects__list-item">
+                  <h4>{project.title}</h4>
+                </div>
+              ))}
           </div>
         </div>
         <div className="student-profile-projects__list">
@@ -207,15 +221,13 @@ export default function StudentProfile() {
             Student Projects
           </h3>
           <div className="student-profile-projects__list-items">
-            <div className="student-profile-projects__list-item">
-              <h4>BandSite</h4>
-            </div>
-            <div className="student-profile-projects__list-item">
-              <h4>BrainFlix</h4>
-            </div>
-            <div className="student-profile-projects__list-item">
-              <h4>InStock</h4>
-            </div>
+            {student.projects
+              .filter((project) => project.type === "student_project")
+              .map((project) => (
+                <div className="student-profile-projects__list-item">
+                  <h4>{project.title}</h4>
+                </div>
+              ))}
           </div>
         </div>
         <div className="student-profile-projects__list">
@@ -223,51 +235,24 @@ export default function StudentProfile() {
             Personal Projects
           </h3>
           <div className="student-profile-projects__list-items">
-            <div className="student-profile-projects__list-item">
-              <h4>Solar System</h4>
-            </div>
-            <div className="student-profile-projects__list-item">
-              <h4>File Structure Viewer</h4>
-            </div>
-            <div className="student-profile-projects__list-item">
-              <h4>Journal</h4>
-            </div>
+            {student.projects
+              .filter((project) => project.type === "personal_project")
+              .map((project) => (
+                <div className="student-profile-projects__list-item">
+                  <h4>{project.title}</h4>
+                </div>
+              ))}
           </div>
         </div>
       </div>
       <div className="student-profile-skills">
         <h2 className="student-profile-skills__title">Technical Skills</h2>
         <div className="student-profile-skills__list">
-          <div className="student-profile-skills__list-item">
-            <img src={jsIcon} alt="JS logo" />
-          </div>
-          <div className="student-profile-skills__list-item">
-            <img src={reactIcon} alt="React logo" />
-          </div>
-          <div className="student-profile-skills__list-item">
-            <img src={nodeIcon} alt="Node logo" />
-          </div>
-          <div className="student-profile-skills__list-item">
-            <img src={tsIcon} alt="Node logo" />
-          </div>
-          <div className="student-profile-skills__list-item">
-            <img src={cIcon} alt="Node logo" />
-          </div>
-          <div className="student-profile-skills__list-item">
-            <img src={githubLogo} alt="Node logo" />
-          </div>
-          <div className="student-profile-skills__list-item">
-            <img src={mySqlIcon} alt="Node logo" />
-          </div>
-          <div className="student-profile-skills__list-item">
-            <img src={htmlIcon} alt="Node logo" />
-          </div>
-          <div className="student-profile-skills__list-item">
-            <img src={cssIcon} alt="Node logo" />
-          </div>
-          <div className="student-profile-skills__list-item">
-            <img src={sassIcon} alt="Node logo" />
-          </div>
+          {student.techStacks.map(({ tech_stack }) => (
+            <div className="student-profile-skills__list-item" key={tech_stack}>
+              <img src={techIcons[tech_stack]} alt={`${tech_stack} logo`} />
+            </div>
+          ))}
         </div>
       </div>
     </div>
