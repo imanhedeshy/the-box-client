@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import "./PartnerProfile.scss";
@@ -24,8 +24,16 @@ import sassIcon from "../../assets/images/icons/sass.png";
 import tsIcon from "../../assets/images/icons/typescript.png";
 import cssIcon from "../../assets/images/icons/css-3.png";
 
-export default function PartnerProfile() {
+export default function PartnerProfile({ partner }) {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleClick = (event) => {
+    navigate(`/users/${"imanhedeshy"}/edit`);
+  };
+
+  
 
   return (
     <div className="partner-profile">
@@ -33,28 +41,34 @@ export default function PartnerProfile() {
         <img
           className="partner-profile-info__background"
           alt="background banner"
-          src={profileBkg}
+          src={partner.backgroundImage}
         />
         <img
           className="partner-profile-info__pic"
           alt="partner-profile"
-          src={profilePic}
+          src={partner.profilePic}
         />
+        <span
+          className="partner-profile-info__edit-button"
+          onClick={handleClick}
+        >
+          Edit Profile
+        </span>
         <div className="partner-profile-info__detail">
           <span className="partner-profile-info__detail-name">
-            {"Microsoft"}
+            {partner.name}
           </span>
           <span className="partner-profile-info__detail-headline">
-            {"The greatest company of all!"}
+            {partner.headline}
           </span>
           <span className="partner-profile-info__detail-industry">
-            {"Software Development"}
+            {partner.industry}
           </span>
           <span className="partner-profile-info__detail-location">
-            {"Redmond, Washington"}
+            {partner.location}
           </span>
           <span className="partner-profile-info__detail-employees">
-            {(123_456).toLocaleString("en-US")} employees
+            {(223_456).toLocaleString("en-US")} employees
           </span>
         </div>
         <div className="partner-profile-info__bio">
@@ -68,38 +82,36 @@ export default function PartnerProfile() {
                 setIsExpanded(!isExpanded);
               }}
             >
-              {
-                "Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn’t just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. When we show up, we achieve more together. Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide."
-              }
+              {partner.bio}
             </p>
           </p>
         </div>
         <div className="partner-profile-info__contact">
           <Link
             className="partner-profile-info__contact-item"
-            to={`mailto:${"recruiter@microsoft.com"}`}
+            to={`mailto:${partner.email}`}
           >
             <img
               className="partner-profile-info__contact-icon"
               src={emailIcon}
               alt=""
             />
-            {"recruiter@microsoft.com"}
+            {partner.email}
           </Link>
           <Link
             className="partner-profile-info__contact-item"
-            to={`tel:${"+14256387777"}`}
+            to={`tel:${partner.phoneNumber}`}
           >
             <img
               className="partner-profile-info__contact-icon"
               src={phoneIcon}
               alt=""
             />
-            {"+1 425-638-7777"}
+            {partner.phoneNumber}
           </Link>
           <div className="partner-profile-info__links">
             <Link
-              to={"http://microsoft.com"}
+              to={partner.website}
               className="partner-profile-info__links-item"
             >
               <img
@@ -109,7 +121,7 @@ export default function PartnerProfile() {
               />
             </Link>
             <Link
-              to={"https://www.linkedin.com/company/microsoft//"}
+              to={partner.linkedin}
               className="partner-profile-info__links-item"
             >
               <img
@@ -119,7 +131,7 @@ export default function PartnerProfile() {
               />
             </Link>
             <Link
-              to={"https://github.com/microsoft"}
+              to={partner.github}
               className="partner-profile-info__links-item"
             >
               <img
@@ -129,7 +141,7 @@ export default function PartnerProfile() {
               />
             </Link>
             <Link
-              to={"https://twitter.com/Microsoft"}
+              to={partner.twitter}
               className="partner-profile-info__links-item"
             >
               <img
@@ -145,7 +157,7 @@ export default function PartnerProfile() {
       <div className="partner-profile-hero">
         <iframe
           className="partner-profile-hero__video"
-          src="https://www.youtube.com/embed/RhwVMt_XCUE?si=GId3n6u-IiSZovYf"
+          src={partner.video1}
           loading="lazy"
           title="The Box video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -153,79 +165,89 @@ export default function PartnerProfile() {
         />
         <iframe
           className="partner-profile-hero__video"
-          src="https://www.youtube.com/embed/igpq47gTqlQ?si=AtJNYycmwzV9M5Wv"
+          src={partner.video2}
           loading="lazy"
           title="The Box video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
         />
       </div>
+
       <div className="partner-profile-jobs">
         <div className="partner-profile-jobs__list">
           <h3 className="partner-profile-jobs__list-title">Internships</h3>
-          <div className="partner-profile-jobs__list-items">
-            <div className="partner-profile-jobs__list-item">
-              <h4>BrainStationFlix</h4>
+          {partner.jobs.map((job) => (
+            <div className="partner-profile-jobs__list-items">
+              <div className="partner-profile-jobs__list-item">
+                <h4>BrainStationFlix</h4>
+              </div>
+              <div className="partner-profile-jobs__list-item">
+                <h4>MooCooCaw</h4>
+              </div>
+              <div className="partner-profile-jobs__list-item">
+                <h4>TritonPrivacyVault</h4>
+              </div>
             </div>
-            <div className="partner-profile-jobs__list-item">
-              <h4>MooCooCaw</h4>
-            </div>
-            <div className="partner-profile-jobs__list-item">
-              <h4>TritonPrivacyVault</h4>
-            </div>
-          </div>
+          ))}
         </div>
         <div className="partner-profile-jobs__list">
           <h3 className="partner-profile-jobs__list-title">
             Full-time Opportunities
           </h3>
-          <div className="partner-profile-jobs__list-items">
-            <div className="partner-profile-jobs__list-item">
-              <h4>BandSite</h4>
+          {partner.jobs.map((job) => (
+            <div className="partner-profile-jobs__list-items">
+              <div className="partner-profile-jobs__list-item">
+                <h4>BandSite</h4>
+              </div>
+              <div className="partner-profile-jobs__list-item">
+                <h4>BrainFlix</h4>
+              </div>
+              <div className="partner-profile-jobs__list-item">
+                <h4>InStock</h4>
+              </div>
             </div>
-            <div className="partner-profile-jobs__list-item">
-              <h4>BrainFlix</h4>
-            </div>
-            <div className="partner-profile-jobs__list-item">
-              <h4>InStock</h4>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
+
       <div className="partner-profile-skills">
-        <h2 className="partner-profile-skills__title">Required Technical Skills</h2>
-        <div className="partner-profile-skills__list">
-          <div className="partner-profile-skills__list-item">
-            <img src={jsIcon} alt="JS logo" />
+        <h2 className="partner-profile-skills__title">
+          Required Technical Skills
+        </h2>
+        {partner.techStacks.map((stack) => (
+          <div className="partner-profile-skills__list">
+            <div className="partner-profile-skills__list-item">
+              <img src={jsIcon} alt="JS logo" />
+            </div>
+            <div className="partner-profile-skills__list-item">
+              <img src={reactIcon} alt="React logo" />
+            </div>
+            <div className="partner-profile-skills__list-item">
+              <img src={nodeIcon} alt="Node logo" />
+            </div>
+            <div className="partner-profile-skills__list-item">
+              <img src={tsIcon} alt="Node logo" />
+            </div>
+            <div className="partner-profile-skills__list-item">
+              <img src={cIcon} alt="Node logo" />
+            </div>
+            <div className="partner-profile-skills__list-item">
+              <img src={githubLogo} alt="Node logo" />
+            </div>
+            <div className="partner-profile-skills__list-item">
+              <img src={mySqlIcon} alt="Node logo" />
+            </div>
+            <div className="partner-profile-skills__list-item">
+              <img src={htmlIcon} alt="Node logo" />
+            </div>
+            <div className="partner-profile-skills__list-item">
+              <img src={cssIcon} alt="Node logo" />
+            </div>
+            <div className="partner-profile-skills__list-item">
+              <img src={sassIcon} alt="Node logo" />
+            </div>
           </div>
-          <div className="partner-profile-skills__list-item">
-            <img src={reactIcon} alt="React logo" />
-          </div>
-          <div className="partner-profile-skills__list-item">
-            <img src={nodeIcon} alt="Node logo" />
-          </div>
-          <div className="partner-profile-skills__list-item">
-            <img src={tsIcon} alt="Node logo" />
-          </div>
-          <div className="partner-profile-skills__list-item">
-            <img src={cIcon} alt="Node logo" />
-          </div>
-          <div className="partner-profile-skills__list-item">
-            <img src={githubLogo} alt="Node logo" />
-          </div>
-          <div className="partner-profile-skills__list-item">
-            <img src={mySqlIcon} alt="Node logo" />
-          </div>
-          <div className="partner-profile-skills__list-item">
-            <img src={htmlIcon} alt="Node logo" />
-          </div>
-          <div className="partner-profile-skills__list-item">
-            <img src={cssIcon} alt="Node logo" />
-          </div>
-          <div className="partner-profile-skills__list-item">
-            <img src={sassIcon} alt="Node logo" />
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

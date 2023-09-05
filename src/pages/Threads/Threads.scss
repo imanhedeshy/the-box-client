@@ -27,6 +27,7 @@
 
     &::placeholder {
       color: slategray;
+      font-size: 1rem;
     }
 
     &:focus {
@@ -43,6 +44,16 @@
 
     &:hover {
       background-color: #f3f8ff;
+    }
+
+    &__pic {
+      position: relative;
+      top: 0.75rem;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: silver;
+      margin-right: 0.75rem;
     }
 
     &__header {
@@ -64,6 +75,7 @@
     &__content {
       overflow: hidden;
       margin-bottom: 0.75rem;
+      margin-left: 3.75rem;
     }
 
     &__actions {
@@ -72,6 +84,8 @@
       align-items: center;
       justify-content: space-around;
       align-self: flex-end;
+      text-align: center;
+
       padding-right: 3rem;
 
       width: 30%;
@@ -84,11 +98,18 @@
 
         &--delete {
           position: absolute;
-          right: 7rem;
+          right: 8rem;
         }
 
         &:hover {
           cursor: pointer;
+          transform: scale(1.05);
+          filter: grayscale(1);
+        }
+
+        &:active {
+          transform: scale((0.95));
+          filter: opacity(1);
         }
       }
     }
@@ -135,14 +156,23 @@
       &-item {
         display: flex;
         flex-direction: row;
-        // align-items: center;
 
         padding: 0.25rem 0.5rem;
         margin: 0.25rem 0;
 
         &:hover {
-          background-color: white;
+          background-color: #ddd;
         }
+      }
+
+      &-pic {
+        position: relative;
+        top: -0.35rem;
+        width: 2rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        background-color: silver;
+        margin-right: 0.5rem;
       }
 
       &-user,

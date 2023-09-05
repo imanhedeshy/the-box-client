@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -13,6 +14,7 @@ import Profile from "./pages/Profile/Profile";
 import Yearbook from "./pages/Yearbook/Yearbook";
 import Threads from "./pages/Threads/Threads";
 import Expo from "./pages/Expo/Expo";
+import Chat from "./pages/Chat/Chat";
 import NotFound from "./components/NotFound/NotFound";
 
 import Header from "./components/Header/Header";
@@ -22,6 +24,8 @@ import "./App.scss";
 function App() {
   generateRandomInCss();
 
+  const [userType, setUserType] = useState("");
+
   return (
     <Router className="app">
       <Header />
@@ -30,10 +34,21 @@ function App() {
           <Route path="/" element={<SignUpLogIn />} />
           <Route path="/login" element={<SignUpLogIn />} />
           <Route path="/signup" element={<SignUpLogIn />} />
-          <Route path="/users/:username" element={<Profile />} />
+          <Route
+            path="/users/:username"
+            element={<Profile userType={userType} setUserType={setUserType} />}
+          />
+          <Route
+            path="/users/:username/edit"
+            element={<Profile userType={userType} setUserType={setUserType} />}
+          />
           <Route path="/yearbook" element={<Yearbook />} />
           <Route path="/threads" element={<Threads />} />
-          <Route path="/expo" element={<Expo />} />
+          <Route
+            path="/expo"
+            element={<Expo userType={userType} setUserType={setUserType} />}
+          />
+          <Route path="/chat" element={<Chat />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>

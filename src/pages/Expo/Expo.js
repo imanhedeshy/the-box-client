@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import "./Expo.scss";
 
@@ -7,9 +7,7 @@ import mockUsers from "../../data/mockUsersFprExpo";
 import profilePic from "../../assets/images/images/profile_pic (5).png";
 import rightArrow from "../../assets/images/icons/right-chevron (1).svg";
 
-export default function Expo() {
-  const [userType, setUserType] = useState("");
-
+export default function Expo({ userType, setUserType }) {
   document.title = "The BOX | Expo";
 
   const filteredUsers = userType

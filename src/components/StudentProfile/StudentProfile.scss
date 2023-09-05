@@ -9,6 +9,19 @@
     flex-direction: column;
     margin-bottom: 1rem;
 
+    &__edit-button {
+      align-self: flex-end;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-right: .75rem;
+      color: #1358db;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+
     &__background {
       width: calc(100% + 2rem);
       height: 8rem;

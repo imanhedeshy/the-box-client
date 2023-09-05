@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import "./StudentProfile.scss";
@@ -27,6 +27,12 @@ import cssIcon from "../../assets/images/icons/css-3.png";
 export default function StudentProfile() {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const navigate = useNavigate();
+
+  const handleClick = (event) => {
+    navigate(`/users/${"imanhedeshy"}/edit`);
+  };
+
   return (
     <div className="student-profile">
       <div className="student-profile-info">
@@ -40,6 +46,12 @@ export default function StudentProfile() {
           alt="student-profile"
           src={profilePic}
         />
+        <span
+          className="partner-profile-info__edit-button"
+          onClick={handleClick}
+        >
+          Edit Profile
+        </span>
         <div className="student-profile-info__detail">
           <span className="student-profile-info__detail-name">
             {"Iman Hedeshy"}
