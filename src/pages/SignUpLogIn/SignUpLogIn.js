@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 
-import { logIn, signUp } from "../../utils/apiCalls";
+import { logIn, signUp, getStudentByUsername } from "../../utils/apiCalls";
 import {
   isStrong,
   passwordsMatch,
@@ -26,13 +26,16 @@ export default function SignUpLogIn({ user, setUser }) {
   const initialFormData = {
     username: "",
     email: "",
+    userType: "",
     password: "",
     confirmPassword: "",
   };
   const [formData, setFormData] = useState(initialFormData);
+
   const [formError, setFormError] = useState({
     username: false,
     email: false,
+    userType: false,
     password: false,
     confirmPassword: false,
   });
@@ -61,51 +64,9 @@ export default function SignUpLogIn({ user, setUser }) {
     navigate("/signup");
   };
 
-  /* // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   setFormData({
-  //     username: event.target.username.value,
-  //     email: event.target.email.value,
-  //     password: event.target.password.value,
-  //     confirmPassword: event.target.confirmPassword.value,
-  //   });
-
-  //   const submitButton = event.nativeEvent.submitter.name;
-  //   const formInputs = event.target;
-
-  //   if (submitButton === "log-in") {
-  //     const result = await logIn(
-  //       formInputs.username.value,
-  //       formInputs.password.value
-  //     );
-  //     if (result.success) {
-  //       const tokenSet = await setToken(result.token);
-  //       if (tokenSet) navigate("/expo");
-  //     } else if (!result.success) {
-  //       console.log(result.error);
-  //       setLoginError(result.error);
-  //       return;
-  //     }
-  //   } else {
-  //     const result = await signUp(
-  //       formInputs.username.value,
-  //       formInputs.password.value,
-  //       formInputs.email.value
-  //     );
-  //     if (!result.success) {
-  //       console.error(result.error);
-  //       return;
-  //     } else if (result.success) {
-  //       await setToken(result.token);
-  //       navigate("/expo");
-  //     } else throw new Error("No token received from server!");
-  //   }
-  //   setFormData(initialFormData);
-  // };*/
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { username, email, password, confirmPassword } = event.target;
+    const { username, email, password, confirmPassword, userType } = event.target;
 
     // Validate form data
     /* if (!isLogIn) {
@@ -130,16 +91,13 @@ export default function SignUpLogIn({ user, setUser }) {
 
     const result = isLogIn
       ? await logIn(username.value, password.value)
-      : await signUp(username.value, password.value, email.value);
-    console.log(result);
+      : await signUp(username.value, password.value, email.value, userType.value);
     if (result.success) {
       await setToken(result.token);
-      setUser({
-        id: result.id,
-        name: result.name,
-        username: result.username,
-        type: result.user_type || "student",
-      });
+      console.log(result);
+    
+      localStorage.setItem("storageUser", JSON.stringify(result));
+      setUser(result);
       navigate("/expo");
     } else {
       console.error(result.error);
@@ -170,7 +128,6 @@ export default function SignUpLogIn({ user, setUser }) {
               </span>
             </div>
           </article>
-          {/* <form onSubmit={handleSubmit} className="signup-login-form"> */}
           <form onSubmit={handleSubmit} className="signup-login-form">
             <label className="signup-login-form__label" htmlFor="username">
               <input
@@ -199,6 +156,28 @@ export default function SignUpLogIn({ user, setUser }) {
                 onChange={handleChange}
               />
             </label>
+            <label
+              className={`signup-login-form__label ${
+                isLogIn ? "signup-login-form__label--hide" : ""
+              }`}
+              htmlFor="userType"
+            >
+              <select
+                className="signup-login-form__input signup-login-form__input--dropdown"
+                name="userType"
+                id="userType"
+                value={formData.userType}
+                onChange={handleChange}
+              >
+                <option value="" disabled>
+                  Select User Type
+                </option>
+                <option value="student">Student</option>
+                <option value="partner">Partner</option>
+                <option value="educator">Educator</option>
+              </select>
+            </label>
+
             <label className="signup-login-form__label" htmlFor="password">
               <input
                 className="signup-login-form__input"
@@ -226,14 +205,6 @@ export default function SignUpLogIn({ user, setUser }) {
                 onChange={handleChange}
               />
             </label>
-            {/* <button
-              className={`signup-login-form__button ${
-                !isLogIn ? "signup-login-form__button--hide" : ""
-              }`}
-              name="log-in"
-            >
-              Log In
-            </button> */}
             {loginError && <div style={{ color: "red" }}>{loginError}</div>}
             <button
               className={`signup-login-form__button ${

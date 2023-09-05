@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Expo.scss";
 
@@ -9,16 +8,25 @@ import rightArrow from "../../assets/images/icons/right-chevron (1).svg";
 
 export default function Expo({ selectedUserType, setSelectedUserType }) {
   document.title = "The BOX | Expo";
+  const navigate = useNavigate();
 
-  
   const filteredUsers = selectedUserType
     ? mockUsers.filter((user) => user.userType === selectedUserType)
     : mockUsers;
 
   const handleClick = (event) => {
-    if (event.target.innerText === "Students") setSelectedUserType("student");
-    if (event.target.innerText === "Educators") setSelectedUserType("educator");
-    if (event.target.innerText === "Partners") setSelectedUserType("partner");
+    if (event.target.innerText === "Students") {
+      localStorage.setItem("storageUserType", "student");
+      setSelectedUserType("student");
+    }
+    if (event.target.innerText === "Educators") {
+      localStorage.setItem("storageUserType", "educator");
+      setSelectedUserType("educator");
+    }
+    if (event.target.innerText === "Partners") {
+      localStorage.setItem("storageUserType", "partner");
+      setSelectedUserType("partner");
+    }
   };
 
   return (
@@ -90,9 +98,12 @@ export default function Expo({ selectedUserType, setSelectedUserType }) {
                 </div>
               </div>
               <div className="expo-shortcuts">
-                <Link
+                <p
                   className="expo-shortcuts__link"
-                  to={`/users/${user.username}`}
+                  onClick={() => {
+                    setSelectedUserType(user.userType);
+                    navigate(`/users/${user.username}`);
+                  }}
                 >
                   View Full Profile
                   <img
@@ -100,7 +111,7 @@ export default function Expo({ selectedUserType, setSelectedUserType }) {
                     src={rightArrow}
                     alt=""
                   />
-                </Link>
+                </p>
               </div>
             </div>
           </>

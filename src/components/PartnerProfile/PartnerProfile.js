@@ -22,7 +22,8 @@ import tsIcon from "../../assets/images/icons/typescript.png";
 import cssIcon from "../../assets/images/icons/css-3.png";
 
 export default function PartnerProfile({ partner, user }) {
-  console.log(partner, user);
+  const storageUser = JSON.parse(localStorage.getItem("storageUser"));
+
   const [isExpanded, setIsExpanded] = useState(false);
 
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ export default function PartnerProfile({ partner, user }) {
           alt="partner-profile"
           src={partner.profilePic}
         />
-        {partner.username === user.username ? (
+        {partner.username === user.username || storageUser.username ? (
           <span
             className="partner-profile-info__edit-button"
             onClick={handleClick}

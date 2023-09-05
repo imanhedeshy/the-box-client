@@ -8,9 +8,10 @@ import userPic from "../../assets/images/images/profile_pic (4).png";
 export default function Chat() {
   const SOCKET_URL = process.env.REACT_APP_SOCKET_URL;
 
+  const storageUser = JSON.parse(localStorage.getItem("storageUser"));
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
-  const [username, setUsername] = useState("Iman");
+  const [username, setUsername] = useState(storageUser.name);
 
   const messagesEndRef = useRef(null);
 

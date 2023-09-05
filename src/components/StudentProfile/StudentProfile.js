@@ -22,8 +22,9 @@ import tsIcon from "../../assets/images/icons/typescript.png";
 import cssIcon from "../../assets/images/icons/css-3.png";
 
 export default function StudentProfile({ student, user }) {
+  const storageUser = JSON.parse(localStorage.getItem("storageUser"));
 
-  console.log(student);
+  console.log(user.username, storageUser.username);
   const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
 
@@ -57,12 +58,16 @@ export default function StudentProfile({ student, user }) {
           alt="student-profile"
           src={student.profilePic}
         />
-        <span
-          className="partner-profile-info__edit-button"
-          onClick={handleClick}
-        >
-          Edit Profile
-        </span>
+        {student.username === user.username || storageUser.username ? (
+          <span
+            className="partner-profile-info__edit-button"
+            onClick={handleClick}
+          >
+            Edit Profile
+          </span>
+        ) : (
+          ""
+        )}
         <div className="student-profile-info__detail">
           <span className="student-profile-info__detail-name">
             {student.name}

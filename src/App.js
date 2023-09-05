@@ -33,12 +33,6 @@ function App() {
     id: "",
   });
 
-  // To update a specific property of the user object
-  // setUser({
-  //   ...user,
-  //   name: "New Name",
-  // });
-
   return (
     <Router className="app">
       <Header />

@@ -13,10 +13,12 @@ import StudentProfile from "../../components/StudentProfile/StudentProfile";
 import PartnerProfile from "../../components/PartnerProfile/PartnerProfile";
 
 export default function Profile({ selectedUserType, user }) {
-  console.log(selectedUserType, user);
   const location = useLocation();
-  const username = useParams().username;
+  const params = useParams();
+  const username = params.username;
 
+  const storageUserType = localStorage.getItem("storageUserType");
+  
   const [student, setStudent] = useState({
     id: "student_id",
     username: "student_username",
@@ -27,8 +29,8 @@ export default function Profile({ selectedUserType, user }) {
     cohort: "Online" || "student_cohort",
     cohortDate: "Jun 23" || "student_cohortdate",
     cohortName: "The Nameless '23" || "student_cohortname",
-    backgroundImage: studentBkg || "student_background_image",
-    profilePic: studentPic || "student_profile_pic",
+    backgroundImage:  "student_background_image",
+    profilePic:  "student_profile_pic",
     userType: "student" || "student_user_type",
     bio:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec in efficitur leo. Maecenas non felis facilisis, tristique quam vel, accumsan libero. Curabitur at tristique metus, nec lacinia est. Integer nec odio praesent libero lacinia ante." ||
@@ -154,8 +156,7 @@ export default function Profile({ selectedUserType, user }) {
       ] || "student_tech_stack",
   });
 
-  //get the useby username from database
-  const partner = {
+  const [partner, setPartner] = useState({
     id: "partner_id",
     username: "partner_username",
     name: "Microsoft" || "partner_name",
@@ -241,13 +242,15 @@ export default function Profile({ selectedUserType, user }) {
         { tech_stack: "css" },
         { tech_stack: "sass" },
       ] || "partner_tech_stack",
-  };
+  });
 
+console.log("1", selectedUserType, "2", storageUserType);
   useEffect(() => {
     const getUserByUsername = async (username) => {
-      if (selectedUserType === "student") {
+      if (selectedUserType || storageUserType === "partner") {
+      }
+      if (selectedUserType || storageUserType === "student") {
         const result = await getStudentByUsername(username);
-        console.log(result.data);
         setStudent(result.data);
       }
     };
@@ -264,11 +267,13 @@ export default function Profile({ selectedUserType, user }) {
   };
 
   if (location.pathname.endsWith("edit"))
-    return <UpdateProfile user={userMap[selectedUserType]} />;
-  if (selectedUserType === "student")
-    return <StudentProfile student={student} user={user} />;
-  if (selectedUserType === "educator")
+    return (
+      <UpdateProfile user={userMap[selectedUserType || storageUserType]} />
+    );
+  if (selectedUserType || storageUserType === "educator")
     return <StudentProfile educator={educator} user={user} />;
-  if (selectedUserType === "partner")
+  if (selectedUserType || storageUserType === "partner")
     return <PartnerProfile partner={partner} user={user} />;
+  if (selectedUserType || storageUserType === "student")
+    return <StudentProfile student={student} user={user} />;
 }

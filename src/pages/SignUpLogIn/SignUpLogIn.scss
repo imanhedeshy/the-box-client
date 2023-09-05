@@ -94,6 +94,10 @@
 
       font-size: 1rem;
 
+      &--dropdown {
+        appearance: none;
+      }
+
       &:focus {
         border: 0.125rem solid #1358db;
         margin: 0;
