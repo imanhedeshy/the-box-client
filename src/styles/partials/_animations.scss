@@ -111,17 +111,17 @@
 
 @keyframes pulse {
   0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 5px rgba(46, 102, 229, 0.7);
+    transform: scale(0.99);
+    box-shadow: 0 0 5px rgba(197, 197, 197, 0.7);
   }
   50% {
-    transform: scale(1);
-    box-shadow: 0 0 20px rgba(46, 102, 229, 0.7),
-      0 0 30px rgba(46, 102, 229, 0.7);
+    transform: scale(1.01);
+    box-shadow: 0 0 20px rgba(207, 207, 207, 0.7),
+      0 0 30px rgba(245, 245, 245, 0.7);
   }
   100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 5px rgba(46, 102, 229, 0.7);
+    transform: scale(0.99);
+    box-shadow: 0 0 5px rgba(190, 190, 190, 0.7);
   }
 }
 

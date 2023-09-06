@@ -13,7 +13,7 @@
       align-self: flex-end;
       font-size: 0.85rem;
       font-weight: 600;
-      margin-right: .75rem;
+      margin-right: 0.75rem;
       color: #1358db;
 
       &:hover {
@@ -233,13 +233,33 @@
         padding: 0.5rem;
         flex-shrink: 0;
 
+        & > p {
+          padding: 1rem;
+          font-size: 0.85rem;
+        }
+
         & > h4 {
-          animation: rotateAnimation infinite 2s forwards;
+          animation: pulse infinite 7s forwards;
+          border: 0.0625rem solid slategray;
+          border-radius: .25rem;
+          padding: 3rem;
+          height: 60%;
+          width: 90%;
+
+
+          & > a {
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
 
         &:hover {
           cursor: pointer;
           background-color: #f3f8ff;
+        }
+        &:active {
+          transform: scale(0.98);
         }
       }
     }

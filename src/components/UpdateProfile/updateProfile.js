@@ -1,29 +1,56 @@
 // import { useParams } from "react-router-dom";
-// import profilePicture from "../../assets/images/images/profile_pic (2).png";
-
+// import Iman from "../../assets/images/images/Iman.png";
+// import { useEffect, useState } from "react";
 // import "./UpdateProfile.scss";
-// import { useEffect } from "react";
 
 // export default function UpdateProfile() {
 //   const storageUser = JSON.parse(localStorage.getItem("storageUser"));
 //   const { username } = useParams();
-//   document.title = `The Box | ${storageUser.name}`;
+
+//   const [formData, setFormData] = useState({
+//     name: storageUser.name,
+//     username: storageUser.username,
+//     email: storageUser.email,
+//     userType: storageUser.userType,
+//     bio: storageUser.bio,
+//     currentPassword: "",
+//     newPassword: "",
+//     confirmPassword: "",
+//   });
+
+//   useEffect(() => {
+//     document.title = `The Box | ${storageUser.name}`;
+//   }, [storageUser]);
+
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({
+//       ...formData,
+//       [name]: value,
+//     });
+//   };
+
+//   const handleFormSubmit = (e) => {
+//     e.preventDefault();
+//     // TODO: Send formData to server for updating
+//   };
 
 //   return (
 //     <div className="update-profile">
 //       <img
 //         className="update-profile__picture"
-//         src={profilePicture}
+//         src={`/assets/images/images/${formData.name}.png`}
 //         alt="update-profile"
 //       />
-//       <form className="update-profile-form">
+//       <form className="update-profile-form" onSubmit={handleFormSubmit}>
 //         <label className="update-profile-form__label" htmlFor="name">
 //           Name
 //           <input
 //             className="update-profile-form__input"
 //             name="name"
 //             id="name"
-//             value="Iman Hedeshy"
+//             value={formData.name}
+//             onChange={handleInputChange}
 //             placeholder="Full Name"
 //           />
 //         </label>
@@ -33,7 +60,8 @@
 //             className="update-profile-form__input"
 //             name="username"
 //             id="username"
-//             value={username}
+//             value={formData.username}
+//             onChange={handleInputChange}
 //             placeholder="Username"
 //             disabled={true}
 //           />
@@ -44,7 +72,8 @@
 //             className="update-profile-form__input"
 //             name="email"
 //             id="email"
-//             value="iman.hedeshy@gmail.com"
+//             value={formData.email}
+//             onChange={handleInputChange}
 //             placeholder="Email"
 //           />
 //         </label>
@@ -54,7 +83,8 @@
 //             className="update-profile-form__input"
 //             name="userType"
 //             id="userType"
-//             value="Odin"
+//             value={formData.userType}
+//             onChange={handleInputChange}
 //             placeholder="User Type"
 //             disabled={true}
 //           />
@@ -65,7 +95,8 @@
 //             className="update-profile-form__input profile-form__input--textarea"
 //             name="bio"
 //             id="bio"
-//             value="Husband, Software Engineer, MBA, Elecetrical Engineer, Operations Manager, Project Manager, Sport Enthusiast, Guitar Player, Foody, Sushi Lover"
+//             value={formData.bio}
+//             onChange={handleInputChange}
 //             placeholder="Bio"
 //           />
 //         </label>
@@ -75,6 +106,8 @@
 //             className="update-profile-form__input"
 //             name="currentPassword"
 //             id="currentPassword"
+//             value={formData.currentPassword}
+//             onChange={handleInputChange}
 //             placeholder="Current Passwords"
 //           />
 //         </label>
@@ -84,6 +117,8 @@
 //             className="update-profile-form__input"
 //             name="newPassword"
 //             id="newPassword"
+//             value={formData.newPassword}
+//             onChange={handleInputChange}
 //             placeholder="New Password"
 //           />
 //         </label>
@@ -93,6 +128,8 @@
 //             className="update-profile-form__input"
 //             name="confirmPassword"
 //             id="confirmPassword"
+//             value={formData.confirmPassword}
+//             onChange={handleInputChange}
 //             placeholder="Confirm Password"
 //           />
 //         </label>
@@ -101,8 +138,9 @@
 //     </div>
 //   );
 // }
+
 import { useParams } from "react-router-dom";
-import profilePicture from "../../assets/images/images/profile_pic (2).png";
+import Iman from "../../assets/images/images/Iman.png";
 import { useEffect, useState } from "react";
 import "./UpdateProfile.scss";
 
@@ -119,6 +157,20 @@ export default function UpdateProfile() {
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
+    phoneNumber: storageUser.phoneNumber,
+    headline: storageUser.headline,
+    discipline: storageUser.discipline,
+    cohortName: storageUser.cohortName,
+    cohort: storageUser.cohort,
+    cohortDate: storageUser.cohortDate,
+    slack: storageUser.slack,
+    website: storageUser.website,
+    linkedin: storageUser.linkedin,
+    github: storageUser.github,
+    video1: storageUser.video1,
+    video2: storageUser.video2,
+    projects: storageUser.projects,
+    techStacks: storageUser.techStacks,
   });
 
   useEffect(() => {
@@ -142,7 +194,7 @@ export default function UpdateProfile() {
     <div className="update-profile">
       <img
         className="update-profile__picture"
-        src={profilePicture}
+        src={`/assets/images/images/${formData.name}.png`}
         alt="update-profile"
       />
       <form className="update-profile-form" onSubmit={handleFormSubmit}>
@@ -234,6 +286,116 @@ export default function UpdateProfile() {
             value={formData.confirmPassword}
             onChange={handleInputChange}
             placeholder="Confirm Password"
+          />
+        </label>
+        <label className="update-profile-form__label" htmlFor="phoneNumber">
+          Phone Number
+          <input
+            className="update-profile-form__input"
+            name="phoneNumber"
+            id="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleInputChange}
+            placeholder="Phone Number"
+          />
+        </label>
+        <label className="update-profile-form__label" htmlFor="headline">
+          Headline
+          <input
+            className="update-profile-form__input"
+            name="headline"
+            id="headline"
+            value={formData.headline}
+            onChange={handleInputChange}
+            placeholder="Headline"
+          />
+        </label>
+        <label className="update-profile-form__label" htmlFor="discipline">
+          Discipline
+          <input
+            className="update-profile-form__input"
+            name="discipline"
+            id="discipline"
+            value={formData.discipline}
+            onChange={handleInputChange}
+            placeholder="Discipline"
+          />
+        </label>
+        <label className="update-profile-form__label" htmlFor="cohortName">
+          Cohort Name
+          <input
+            className="update-profile-form__input"
+            name="cohortName"
+            id="cohortName"
+            value={formData.cohortName}
+            onChange={handleInputChange}
+            placeholder="Cohort Name"
+          />
+        </label>
+        <label className="update-profile-form__label" htmlFor="cohort">
+          Cohort
+          <input
+            className="update-profile-form__input"
+            name="cohort"
+            id="cohort"
+            value={formData.cohort}
+            onChange={handleInputChange}
+            placeholder="Cohort"
+          />
+        </label>
+        <label className="update-profile-form__label" htmlFor="cohortDate">
+          Cohort Date
+          <input
+            className="update-profile-form__input"
+            name="cohortDate"
+            id="cohortDate"
+            value={formData.cohortDate}
+            onChange={handleInputChange}
+            placeholder="Cohort Date"
+          />
+        </label>
+        <label className="update-profile-form__label" htmlFor="slack">
+          Slack
+          <input
+            className="update-profile-form__input"
+            name="slack"
+            id="slack"
+            value={formData.slack}
+            onChange={handleInputChange}
+            placeholder="Slack"
+          />
+        </label>
+        <label className="update-profile-form__label" htmlFor="website">
+          Website
+          <input
+            className="update-profile-form__input"
+            name="website"
+            id="website"
+            value={formData.website}
+            onChange={handleInputChange}
+            placeholder="Website"
+          />
+        </label>
+        <label className="update-profile-form__label" htmlFor="linkedin">
+          LinkedIn
+          <input
+            className="update-profile-form__input"
+            name="linkedin"
+            id="linkedin"
+            value={formData.linkedin}
+            onChange={handleInputChange}
+            placeholder="LinkedIn"
+          />
+        </label>
+        <label className="update-profile-form__label" htmlFor="github">
+          GitHub
+          <input
+            className="update-profile-form__input"
+            name="github"
+            id="github"
+            value={formData.github}
+            onChange={handleInputChange}
+            placeholder="GitHub"
           />
         </label>
         <button className="update-profile-form__button">Save</button>

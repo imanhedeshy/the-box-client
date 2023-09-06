@@ -8,6 +8,7 @@ import {
   deleteThreadById,
   createCommentbyId,
 } from "../../utils/apiCalls";
+
 import timeAgoConverter from "../../utils/timeAgoConverter";
 
 import "./Threads.scss";
@@ -20,8 +21,15 @@ import trash from "../../assets/images/icons/bin.png";
 import star from "../../assets/images/icons/star.png";
 import comment from "../../assets/images/icons/reply-message.png";
 
-import user1 from "../../assets/images/images/profile_pic (3).png";
-import user2 from "../../assets/images/images/profile_pic (4).png";
+import Iman from "../../assets/images/images/Iman.png";
+import Bruce from "../../assets/images/images/Bruce.png";
+import Jack from "../../assets/images/images/Jack.png";
+import James from "../../assets/images/images/James.png";
+import Jane from "../../assets/images/images/Jane.png";
+import Jenny from "../../assets/images/images/Jenny.png";
+import John from "../../assets/images/images/John.png";
+import Sahar from "../../assets/images/images/Sahar.png";
+import yas from "../../assets/images/images/yas.png";
 
 export default function Threads() {
   const [threads, setThreads] = useState([]);
@@ -151,7 +159,11 @@ export default function Threads() {
         return (
           <div className="threads-wrapper" key={thread.thread_id}>
             <div className="threads-wrapper__header">
-              <img className="threads-wrapper__pic" src={user1} alt="user" />
+              <img
+                className="threads-wrapper__pic"
+                src={`/assets/images/images/${thread.user_name}.png`}
+                alt="user"
+              />
 
               <h4 className="threads-wrapper__username">{thread.user_name}</h4>
               <span className="threads-wrapper__timestamp">
@@ -180,17 +192,18 @@ export default function Threads() {
                 ? thread.comments.filter((comment) => comment.content !== null)
                     .length
                 : 0}
-              {thread.user_username === you ? (
-                <img
-                  className="threads-wrapper__actions-icon threads-wrapper__actions-icon--delete"
-                  src={trash}
-                  alt=""
-                  id="delete-icon"
-                  onClick={() => handleDelete(thread.thread_id)}
-                />
-              ) : (
-                ""
-              )}
+
+              <img
+                className={`threads-wrapper__actions-icon ${
+                  thread.user_username === you
+                    ? "threads-wrapper__actions-icon--delete"
+                    : "threads-wrapper__actions-icon--delete--hide"
+                }`}
+                src={trash}
+                alt=""
+                id="delete-icon"
+                onClick={() => handleDelete(thread.thread_id)}
+              />
             </div>
             {isCommentOpen && (
               <div className="threads-wrapper__comments">
@@ -213,7 +226,9 @@ export default function Threads() {
                           >
                             <img
                               className="threads-wrapper__comments-pic"
-                              src={user2}
+                              src={`/assets/images/images/${
+                                comment.user_name.split(" ")[0]
+                              }.png`}
                               alt="user"
                             />
                             <span className="threads-wrapper__comments-user">

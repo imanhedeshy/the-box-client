@@ -4,7 +4,13 @@
   height: 70vh;
 
   &__title {
-    margin: 0.5rem auto 1rem auto;
+    width: 100%;
+    text-align: center;
+    align-self: center;
+    margin: 1rem;
+    color: darkslategrey;
+
+    animation: loadingDot infinite 1s;
   }
 
   &__list {

@@ -3,10 +3,20 @@ import { useLocation, useParams } from "react-router-dom";
 
 import { getStudentByUsername } from "../../utils/apiCalls";
 
-import profileBkg from "../../assets/images/images/microsoft-bgimage.jpg";
-import profilePic from "../../assets/images/images/microsoft-logo.jpg";
-import studentBkg from "../../assets/images/images/blue-polygon-dark-background-social-template_53876-116080.webp";
-import studentPic from "../../assets/images/images/profile_pic (2).png";
+import IsLoading from "../../components/IsLoading/IsLoading";
+
+import MicrosoftBkg from "../../assets/images/images/MicrosoftBkg.jpg";
+import Microsoft from "../../assets/images/images/Microsoft.jpg";
+import Bkg from "../../assets/images/images/Bkg.webp";
+import Iman from "../../assets/images/images/Iman.png";
+import Bruce from "../../assets/images/images/Bruce.png";
+import Jack from "../../assets/images/images/Jack.png";
+import James from "../../assets/images/images/James.png";
+import Jane from "../../assets/images/images/Jane.png";
+import Jenny from "../../assets/images/images/Jenny.png";
+import John from "../../assets/images/images/John.png";
+import Sahar from "../../assets/images/images/Sahar.png";
+import yas from "../../assets/images/images/yas.png";
 
 import UpdateProfile from "../../components/UpdateProfile/updateProfile";
 import StudentProfile from "../../components/StudentProfile/StudentProfile";
@@ -17,20 +27,22 @@ export default function Profile({ selectedUserType, user }) {
   const params = useParams();
   const username = params.username;
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const storageUserType = localStorage.getItem("storageUserType");
-  
+
   const [student, setStudent] = useState({
     id: "student_id",
     username: "student_username",
-    name: "Iman Hedeshy" || "student_name",
+    name: "Iman" || "student_name",
     email: "iman.hedeshy@gmail.com" || "student_email",
     headline: "The strongest developer of Asgard!" || "student_headline",
     discipline: "Software Engineering" || "student_discipline",
     cohort: "Online" || "student_cohort",
     cohortDate: "Jun 23" || "student_cohortdate",
     cohortName: "The Nameless '23" || "student_cohortname",
-    backgroundImage:  "student_background_image",
-    profilePic:  "student_profile_pic",
+    backgroundImage: Bkg || "student_background_image",
+    profilePic: "student_profile_pic",
     userType: "student" || "student_user_type",
     bio:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec in efficitur leo. Maecenas non felis facilisis, tristique quam vel, accumsan libero. Curabitur at tristique metus, nec lacinia est. Integer nec odio praesent libero lacinia ante." ||
@@ -53,8 +65,9 @@ export default function Profile({ selectedUserType, user }) {
         {
           id: "project_id",
           title: "The BOX!",
-          type: "capstone" || "project_type",
-          description: "project_description",
+          type: "capstone",
+          description:
+            "The BOX (Bridge Of eXperience) is a dynamic React/Node-based platform connecting different users like students, and industry professionals through skill showcase, social networking, and real-time chat.",
           imageSrc: "project_image_source",
           link: "project_link",
           createdAt: "project_created_at",
@@ -62,8 +75,8 @@ export default function Profile({ selectedUserType, user }) {
         {
           id: "project_id",
           title: "BrainStationFlix",
-          type: "hackathon" || "project_type",
-          description: "project_description",
+          type: "hackathon",
+          description: "BrainStationFlix was created during a hackathon event ",
           imageSrc: "project_image_source",
           link: "project_link",
           createdAt: "project_created_at",
@@ -71,8 +84,9 @@ export default function Profile({ selectedUserType, user }) {
         {
           id: "project_id",
           title: "TritonPrivacyVault",
-          type: "hackathon" || "project_type",
-          description: "project_description",
+          type: "hackathon",
+          description:
+            "TritonPrivacyVault was developed during a hackathon competition ",
           imageSrc: "project_image_source",
           link: "project_link",
           createdAt: "project_created_at",
@@ -80,8 +94,9 @@ export default function Profile({ selectedUserType, user }) {
         {
           id: "project_id",
           title: "MooCooCaw",
-          type: "hackathon" || "project_type",
-          description: "project_description",
+          type: "hackathon",
+          description:
+            "MooCooCaw is a project created during a hackathon challenge ",
           imageSrc: "project_image_source",
           link: "project_link",
           createdAt: "project_created_at",
@@ -89,8 +104,9 @@ export default function Profile({ selectedUserType, user }) {
         {
           id: "project_id",
           title: "BandSite",
-          type: "student_project" || "project_type",
-          description: "project_description",
+          type: "student_project",
+          description:
+            "BandSite is a student project showcasing web development skills ",
           imageSrc: "project_image_source",
           link: "project_link",
           createdAt: "project_created_at",
@@ -98,8 +114,8 @@ export default function Profile({ selectedUserType, user }) {
         {
           id: "project_id",
           title: "BrainFlix",
-          type: "student_project" || "project_type",
-          description: "project_description",
+          type: "student_project",
+          description: "BrainFlix is a student-built video streaming platform ",
           imageSrc: "project_image_source",
           link: "project_link",
           createdAt: "project_created_at",
@@ -107,8 +123,9 @@ export default function Profile({ selectedUserType, user }) {
         {
           id: "project_id",
           title: "InStock",
-          type: "student_project" || "project_type",
-          description: "project_description",
+          type: "student_project",
+          description:
+            "InStock is a student project related to inventory management ",
           imageSrc: "project_image_source",
           link: "project_link",
           createdAt: "project_created_at",
@@ -116,8 +133,9 @@ export default function Profile({ selectedUserType, user }) {
         {
           id: "project_id",
           title: "Solar System",
-          type: "personal_project" || "project_type",
-          description: "project_description",
+          type: "personal_project",
+          description:
+            "Solar System is a personal project exploring celestial bodies and space ",
           imageSrc: "project_image_source",
           link: "project_link",
           createdAt: "project_created_at",
@@ -125,8 +143,9 @@ export default function Profile({ selectedUserType, user }) {
         {
           id: "project_id",
           title: "File Structure Viewer",
-          type: "personal_project" || "project_type",
-          description: "project_description",
+          type: "personal_project",
+          description:
+            "File Structure Viewer is a personal project for exploring and visualizing file systems ",
           imageSrc: "project_image_source",
           link: "project_link",
           createdAt: "project_created_at",
@@ -134,8 +153,9 @@ export default function Profile({ selectedUserType, user }) {
         {
           id: "project_id",
           title: "Journal",
-          type: "personal_project" || "project_type",
-          description: "project_description",
+          type: "personal_project",
+          description:
+            "Journal is a personal project for keeping notes and records ",
           imageSrc: "project_image_source",
           link: "project_link",
           createdAt: "project_created_at",
@@ -164,8 +184,8 @@ export default function Profile({ selectedUserType, user }) {
     headline: "The greatest company of all!" || "partner_headline",
     location: "Redmond, Washington" || "partner_location",
     industry: "Software Development" || "partner_industry",
-    backgroundImage: profileBkg || "partner_email",
-    profilePic: profilePic || "partner_profile_pic",
+    backgroundImage: MicrosoftBkg || "partner_email",
+    profilePic: Microsoft || "partner_profile_pic",
     userType: "partner_user_type",
     bio:
       "Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. Our culture doesn’t just encourage curiosity; it embraces it. Each day we make progress together by showing up as our authentic selves. We show up with a learn-it-all mentality. We show up cheering on others, knowing their success doesn't diminish our own. We show up every day open to learning our own biases, changing our behavior, and inviting in differences. When we show up, we achieve more together. Microsoft operates in 190 countries and is made up of more than 220,000 passionate employees worldwide." ||
@@ -186,47 +206,52 @@ export default function Profile({ selectedUserType, user }) {
       [
         {
           id: "job_id",
-          title: "job_title",
-          type: "internship" || "job_type",
-          description: "job_description",
-          imageSrc: "job_image_source",
-          link: "job_link",
+          title: "Web Developer",
+          type: "full-time",
+          description:
+            "Join our dynamic team of web developers and work on cutting-edge projects.",
+          imageSrc: "https://example.com/web_dev_image.png",
+          link: "https://example.com/job/web-developer",
           createdAt: "job_created_at",
         },
         {
           id: "job_id",
-          title: "job_title",
-          type: "internship" || "job_type",
-          description: "job_description",
-          imageSrc: "job_image_source",
-          link: "job_link",
+          title: "Marketing Coordinator",
+          type: "full-time",
+          description:
+            "We're seeking a creative marketing coordinator to help us reach new heights.",
+          imageSrc: "https://example.com/marketing_image.png",
+          link: "https://example.com/job/marketing-coordinator",
           createdAt: "job_created_at",
         },
         {
           id: "job_id",
-          title: "job_title",
-          type: "full-time" || "job_type",
-          description: "job_description",
-          imageSrc: "job_image_source",
-          link: "job_link",
+          title: "Data Scientist",
+          type: "full-time",
+          description:
+            "Unlock the potential of data with our team of data scientists.",
+          imageSrc: "https://example.com/data_sci_image.png",
+          link: "https://example.com/job/data-scientist",
           createdAt: "job_created_at",
         },
         {
           id: "job_id",
-          title: "job_title",
-          type: "full-time" || "job_type",
-          description: "job_description",
-          imageSrc: "job_image_source",
-          link: "job_link",
+          title: "Graphic Designer",
+          type: "internship",
+          description:
+            "Create stunning visuals and graphics as a freelance graphic designer.",
+          imageSrc: "https://example.com/graphic_design_image.png",
+          link: "https://example.com/job/graphic-designer",
           createdAt: "job_created_at",
         },
         {
           id: "job_id",
-          title: "job_title",
-          type: "part-time" || "job_type",
-          description: "job_description",
-          imageSrc: "job_image_source",
-          link: "job_link",
+          title: "Customer Support Specialist",
+          type: "internship",
+          description:
+            "Provide exceptional customer support from the comfort of your home.",
+          imageSrc: "https://example.com/customer_support_image.png",
+          link: "https://example.com/job/customer-support-specialist",
           createdAt: "job_created_at",
         },
       ] || "partner_jobs",
@@ -244,19 +269,19 @@ export default function Profile({ selectedUserType, user }) {
       ] || "partner_tech_stack",
   });
 
-console.log("1", selectedUserType, "2", storageUserType);
-  useEffect(() => {
-    const getUserByUsername = async (username) => {
-      if (selectedUserType || storageUserType === "partner") {
-      }
-      if (selectedUserType || storageUserType === "student") {
-        const result = await getStudentByUsername(username);
-        setStudent(result.data);
-      }
-    };
+  // console.log("1", selectedUserType, "2", storageUserType);
+  // useEffect(() => {
+  //   const getUserByUsername = async (username) => {
+  //     if (selectedUserType || storageUserType === "partner") {
+  //     }
+  //     if (selectedUserType || storageUserType === "student") {
+  //       const result = await getStudentByUsername(username);
+  //       setStudent(result.data);
+  //     }
+  //   };
 
-    getUserByUsername(username);
-  }, []);
+  //   getUserByUsername(username).then((res) => setIsLoading(false));
+  // }, []);
 
   const educator = {};
 
@@ -266,14 +291,17 @@ console.log("1", selectedUserType, "2", storageUserType);
     partner: partner,
   };
 
+  console.log(selectedUserType || storageUserType);
+  if (isLoading) return <IsLoading />;
+
   if (location.pathname.endsWith("edit"))
     return (
       <UpdateProfile user={userMap[selectedUserType || storageUserType]} />
     );
-  if (selectedUserType || storageUserType === "educator")
-    return <StudentProfile educator={educator} user={user} />;
-  if (selectedUserType || storageUserType === "partner")
+  if ((selectedUserType || storageUserType) === "partner")
     return <PartnerProfile partner={partner} user={user} />;
-  if (selectedUserType || storageUserType === "student")
+  if ((selectedUserType || storageUserType) === "student")
     return <StudentProfile student={student} user={user} />;
+  if ((selectedUserType || storageUserType) === "educator")
+    return <StudentProfile educator={educator} user={user} />;
 }

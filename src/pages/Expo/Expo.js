@@ -3,7 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Expo.scss";
 
 import mockUsers from "../../data/mockUsersFprExpo";
-import profilePic from "../../assets/images/images/profile_pic (5).png";
+
+import Iman from "../../assets/images/images/Iman.png";
+import Bruce from "../../assets/images/images/Bruce.png";
+import Jack from "../../assets/images/images/Jack.png";
+import James from "../../assets/images/images/James.png";
+import Jane from "../../assets/images/images/Jane.png";
+import Jenny from "../../assets/images/images/Jenny.png";
+import John from "../../assets/images/images/John.png";
+import Sahar from "../../assets/images/images/Sahar.png";
+import yas from "../../assets/images/images/yas.png";
+
 import rightArrow from "../../assets/images/icons/right-chevron (1).svg";
 
 export default function Expo({ selectedUserType, setSelectedUserType }) {
@@ -65,7 +75,7 @@ export default function Expo({ selectedUserType, setSelectedUserType }) {
               <div className="expo-profile">
                 <img
                   className="expo-profile__picture"
-                  src={profilePic}
+                  src={`/assets/images/images/${user.name.split(" ")[0]}.png`}
                   alt="profile"
                 />
                 <h3 className="expo-profile__name">{user.name}</h3>

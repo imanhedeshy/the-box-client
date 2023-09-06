@@ -9,55 +9,76 @@
   padding: 0 1rem;
   background-color: white;
 
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+
   &__description {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    // margin-top: 2rem;
 
     width: 50%;
   }
 
   &__logo {
     width: 50%;
-    scale: 1;
-    margin: 0.25rem;
+    margin: auto 0;
+    display: none;
   }
 
   &__title {
     margin-top: 1rem;
+    font-size: 1.75rem;
+    margin-bottom: .5rem;
+
+    text-shadow: silver .125rem .125rem .125rem;
+
+    // margin-left: 1rem;
   }
 
   &__subtitle {
-    position: absolute;
-    rotate: 0.3rad;
-    font-size: 0.8rem;
-    align-self: flex-end;
-    margin-right: -3rem;
-    margin-top: -1rem;
 
-    animation: loadingDot 2s infinite;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    // position: absolute;
+    // rotate: 0.3rad;
+    font-size: 0.8rem;
+    // align-self: flex-end;
+    // margin-right: -3rem;
+    // margin-top: -1rem;
+    margin-bottom: 1.5rem;
+
+    // animation: loadingDot 2s infinite;
+    & > * {}
   }
 
   &__slogan {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
 
-    margin: 1rem 0;
+    margin-top: 1rem;
 
     &-text {
-      width: 0;
+      // width: 0;
       white-space: nowrap;
       overflow: hidden;
-      &:first-child {
-        animation: typing 3s steps(100) forwards 1s;
-      }
-      &:nth-child(2) {
-        animation: typing 4s steps(130) forwards;
-      }
-      &:last-child {
-        animation: typing 3s steps(210) forwards 1s;
-      }
+      margin: 0 auto;
+      // &:first-child {
+      //   animation: typing 3s steps(100) forwards 1s;
+      // }
+      // &:nth-child(2) {
+      //   animation: typing 4s steps(130) forwards;
+      // }
+      // &:last-child {
+      //   animation: typing 3s steps(210) forwards 1s;
+      // }
     }
   }
 
@@ -151,6 +172,21 @@
 
         &:active {
           background-color: black;
+        }
+      }
+    }
+    &__switch {
+      margin-right: 1rem;
+      margin-top: .25rem;
+      align-self: flex-end;
+      font-size: .85rem;
+      color: #1358db;
+      & > * {
+        font-weight: 600;
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
         }
       }
     }

@@ -11,7 +11,7 @@ export default function Header() {
       <img className="header__menubutton" src={menu} alt="menu button" />
       <Navbar />
       <NavLink className="header__logo" to="/threads">
-        The BOX!
+        The <br/>BOX!
       </NavLink>
     </div>
   );

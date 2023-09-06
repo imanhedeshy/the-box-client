@@ -3,7 +3,15 @@ import io from "socket.io-client";
 
 import "./Chat.scss";
 
-import userPic from "../../assets/images/images/profile_pic (4).png";
+import Iman from "../../assets/images/images/Iman.png";
+import Bruce from "../../assets/images/images/Bruce.png";
+import Jack from "../../assets/images/images/Jack.png";
+import James from "../../assets/images/images/James.png";
+import Jane from "../../assets/images/images/Jane.png";
+import Jenny from "../../assets/images/images/Jenny.png";
+import John from "../../assets/images/images/John.png";
+import Sahar from "../../assets/images/images/Sahar.png";
+import yas from "../../assets/images/images/yas.png";
 
 export default function Chat() {
   const SOCKET_URL = process.env.REACT_APP_SOCKET_URL;
@@ -18,6 +26,7 @@ export default function Chat() {
   const scrollToBottom = () => {
     messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
   };
+
 
   useEffect(() => {
     const socket = io(SOCKET_URL);
@@ -64,6 +73,7 @@ export default function Chat() {
 
   useEffect(scrollToBottom, [messages]);
 
+
   return (
     <div className="chat">
       <h3 className="chat__title">ChatBOX</h3>
@@ -71,7 +81,11 @@ export default function Chat() {
         {messages.map((message, index) => (
           <div className="chat__list__item" key={index}>
             <div className="chat__list__item__content">
-              <img className="chat__list__item__pic" src={userPic} alt="user" />
+              <img
+                className="chat__list__item__pic"
+                src={`/assets/images/images/${message.username}.png`}
+                alt="user"
+              />
               <div>
                 <strong>{message.username}:</strong> {message.message}
               </div>

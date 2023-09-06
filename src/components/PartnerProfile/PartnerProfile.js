@@ -58,7 +58,7 @@ export default function PartnerProfile({ partner, user }) {
           alt="partner-profile"
           src={partner.profilePic}
         />
-        {partner.username === user.username || storageUser.username ? (
+        {partner.username === storageUser.username ? (
           <span
             className="partner-profile-info__edit-button"
             onClick={handleClick}
@@ -198,7 +198,7 @@ export default function PartnerProfile({ partner, user }) {
                   <h4>{job.title}</h4>
                   <img src={job.imageSrc} alt="" />
                   <p>{job.description}</p>
-                  <a href={job.link}>Apply here</a>
+                  <Link href={job.link}>Apply here</Link>
                 </div>
               ))}
           </div>
@@ -215,7 +215,7 @@ export default function PartnerProfile({ partner, user }) {
                   <h4>{job.title}</h4>
                   <img src={job.imageSrc} alt="" />
                   <p>{job.description}</p>
-                  <a href={job.link}>Apply here</a>
+                  <Link href={job.link}>Apply here</Link>
                 </div>
               ))}
           </div>

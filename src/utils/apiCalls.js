@@ -49,7 +49,6 @@ const getStudentByUsername = async (username) => {
         Authorization: token,
       },
     });
-    console.log(result);
     return result;
   } catch (error) {
     console.error({ error: "Error fetching threads from the server." });

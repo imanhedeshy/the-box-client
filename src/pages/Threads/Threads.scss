@@ -11,7 +11,7 @@
   &__title {
     align-self: center;
     margin: 1rem;
-    color: darkolivegreen;
+    color: darkslategrey;
 
     animation: loadingDot infinite 1s;
   }
@@ -81,10 +81,11 @@
     &__actions {
       display: flex;
       flex-direction: row;
+      // align-content: baseline;
       align-items: center;
       justify-content: space-around;
       align-self: flex-end;
-      text-align: center;
+      // text-align: center;
 
       padding-right: 3rem;
 
@@ -97,8 +98,12 @@
         filter: opacity(0.5);
 
         &--delete {
-          position: absolute;
-          right: 8rem;
+          position: relative;
+          right: -1rem;
+
+          &--hide {
+            visibility: hidden;
+          }
         }
 
         &:hover {

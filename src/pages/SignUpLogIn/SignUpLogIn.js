@@ -59,14 +59,21 @@ export default function SignUpLogIn({ user, setUser }) {
   };
 
   const handleSwitch = () => {
-    setIsLogIn(false);
-    document.title = "The Box | Register";
-    navigate("/signup");
+    if (isLogIn) {
+      setIsLogIn(false);
+      document.title = "The Box | Register";
+      navigate("/signup");
+    } else {
+      setIsLogIn(true);
+      document.title = "The Box | Log In";
+      navigate("/login");
+    }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { username, email, password, confirmPassword, userType } = event.target;
+    const { username, email, password, confirmPassword, userType } =
+      event.target;
 
     // Validate form data
     /* if (!isLogIn) {
@@ -91,11 +98,16 @@ export default function SignUpLogIn({ user, setUser }) {
 
     const result = isLogIn
       ? await logIn(username.value, password.value)
-      : await signUp(username.value, password.value, email.value, userType.value);
+      : await signUp(
+          username.value,
+          password.value,
+          email.value,
+          userType.value
+        );
     if (result.success) {
       await setToken(result.token);
       console.log(result);
-    
+
       localStorage.setItem("storageUser", JSON.stringify(result));
       setUser(result);
       navigate("/expo");
@@ -114,10 +126,15 @@ export default function SignUpLogIn({ user, setUser }) {
       ) : (
         <>
           <article className="signup-login__description">
-            <img className="signup-login__logo" src={logo} alt="app logo" />
-            <h3 className="signup-login__title">BrainStation BOX</h3>
+            <div className="signup-login__container">
+              <img className="signup-login__logo" src={logo} alt="app logo" />
+              <h3 className="signup-login__title">
+                The <br />
+                BOX!
+              </h3>
+            </div>
             <span className="signup-login__subtitle">
-              <strong>B</strong>ridge <strong>O</strong>f<br />e
+              <strong>B</strong>ridge&nbsp;<strong>O</strong>f&nbsp;e
               <strong>X</strong>perience
             </span>
             <div className="signup-login__slogan">
@@ -240,6 +257,13 @@ export default function SignUpLogIn({ user, setUser }) {
             >
               Sign Up
             </button>
+            <span
+              className={`signup-login-form__switch ${
+                isLogIn ? "signup-login-form__button--hide" : ""
+              }`}
+            >
+              Already a User? <span onClick={handleSwitch}>&nbsp;Sign In</span>
+            </span>
           </form>
         </>
       )}

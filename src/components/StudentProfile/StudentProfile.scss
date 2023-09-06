@@ -13,12 +13,15 @@
       align-self: flex-end;
       font-size: 0.85rem;
       font-weight: 600;
-      margin-right: .75rem;
+      margin-right: 0.75rem;
       color: #1358db;
 
       &:hover {
         cursor: pointer;
         text-decoration: underline;
+      }
+      &:active {
+        transform: scale(0.95);
       }
     }
 
@@ -78,6 +81,10 @@
         &:hover {
           cursor: pointer;
           text-decoration: underline;
+        }
+
+        &:active {
+          transform: scale(0.95);
         }
       }
     }
@@ -149,8 +156,19 @@
       }
 
       &-resume {
-        margin-top: 0.5rem;
-        font-size: 1rem;
+        align-self: flex-end;
+        margin-top: -2.5rem;
+        margin-right: 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        &:hover {
+          text-decoration: underline;
+          color: #1358db;
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
       }
     }
   }
@@ -203,25 +221,36 @@
 
       &-item {
         display: flex;
-        align-items: center;
-        justify-content: center;
-
+        align-items: flex-start;
+        justify-content: left;
+        padding: 2rem;
         width: 95%;
         aspect-ratio: 1.618;
 
         border: 0.0625rem solid silver;
         border-radius: 0.5rem;
 
+        box-shadow: silver 0 .1875rem .3rem ;
+
         margin-top: 0.5rem;
         margin: 0 auto;
 
         & > h3 {
-          animation: rotateAnimation infinite 2s forwards;
+          animation: tilt-shaking infinite 6s forwards;
+          font-size: 1.5rem;
+          text-shadow: silver .125rem .125rem .125rem;
+        }
+
+        & > p {
+          padding: .75rem 1rem;
         }
 
         &:hover {
           cursor: pointer;
           background-color: #f3f8ff;
+        }
+        &:active {
+          transform: scale(0.99);
         }
       }
     }
@@ -251,13 +280,14 @@
 
         width: 100%;
         height: fit-content;
+
       }
 
       &-item {
         display: flex;
         flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: left;
 
         border: 0.0625rem solid rgba(0, 0, 0, 0.1);
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
@@ -267,16 +297,26 @@
         aspect-ratio: 1.618;
 
         margin: 0.5rem 0;
-        padding: 0.5rem;
+        padding: 1rem;
         flex-shrink: 0;
 
         & > h4 {
-          animation: rotateAnimation infinite 2s forwards;
+          animation: pulse infinite 6s forwards;
+          width: 90%;
+          height: 50%;
+          padding: .75rem;
+        }
+
+        & > p {
+          padding: .75rem 0;
         }
 
         &:hover {
           cursor: pointer;
           background-color: #f3f8ff;
+        }
+        &:active {
+          transform: scale(0.97);
         }
       }
     }

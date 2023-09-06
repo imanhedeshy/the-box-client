@@ -8,6 +8,17 @@ import phoneIcon from "../../assets/images/icons/telephone.png";
 import slackIcon from "../../assets/images/icons/slack (1).png";
 import websiteIcon from "../../assets/images/icons/globe.png";
 
+import Bkg from "../../assets/images/images/Bkg.webp";
+import Iman from "../../assets/images/images/Iman.png";
+import Bruce from "../../assets/images/images/Bruce.png";
+import Jack from "../../assets/images/images/Jack.png";
+import James from "../../assets/images/images/James.png";
+import Jane from "../../assets/images/images/Jane.png";
+import Jenny from "../../assets/images/images/Jenny.png";
+import John from "../../assets/images/images/John.png";
+import Sahar from "../../assets/images/images/Sahar.png";
+import yas from "../../assets/images/images/yas.png";
+
 import linkedinLogo from "../../assets/images/logos/linkedin (1).png";
 import githubLogo from "../../assets/images/logos/github (3).png";
 
@@ -21,10 +32,12 @@ import sassIcon from "../../assets/images/icons/sass.png";
 import tsIcon from "../../assets/images/icons/typescript.png";
 import cssIcon from "../../assets/images/icons/css-3.png";
 
-export default function StudentProfile({ student, user }) {
+export default function StudentProfile(props) {
+  console.log(props);
+  const { student, user } = props;
   const storageUser = JSON.parse(localStorage.getItem("storageUser"));
 
-  console.log(user.username, storageUser.username);
+  console.log(`../../assets/images/images/${student.name}.png`);
   const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
 
@@ -51,12 +64,12 @@ export default function StudentProfile({ student, user }) {
         <img
           className="student-profile-info__background"
           alt="background banner"
-          src={student.backgroundImage}
+          src={Bkg}
         />
         <img
           className="student-profile-info__pic"
           alt="student-profile"
-          src={student.profilePic}
+          src={`/assets/images/images/${student.name}.png`}
         />
         {student.username === user.username || storageUser.username ? (
           <span
@@ -203,6 +216,7 @@ export default function StudentProfile({ student, user }) {
                 </h3>
                 <div className="student-profile-projects__capstone-item">
                   <h3>{project.title}</h3>
+                  <p>{project.description}</p>
                 </div>
               </div>
             );
@@ -217,6 +231,7 @@ export default function StudentProfile({ student, user }) {
               .map((project) => (
                 <div className="student-profile-projects__list-item">
                   <h4>{project.title}</h4>
+                  <p>{project.description}</p>
                 </div>
               ))}
           </div>
@@ -231,6 +246,7 @@ export default function StudentProfile({ student, user }) {
               .map((project) => (
                 <div className="student-profile-projects__list-item">
                   <h4>{project.title}</h4>
+                  <p>{project.description}</p>
                 </div>
               ))}
           </div>
@@ -245,6 +261,7 @@ export default function StudentProfile({ student, user }) {
               .map((project) => (
                 <div className="student-profile-projects__list-item">
                   <h4>{project.title}</h4>
+                  <p>{project.description}</p>
                 </div>
               ))}
           </div>
