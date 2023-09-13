@@ -1,28 +1,34 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import "./Expo.scss";
 
 import mockUsers from "../../data/mockUsersFprExpo";
+import { getUsersForExpo } from "../../utils/apiCalls";
 
-import Iman from "../../assets/images/images/Iman.png";
-import Bruce from "../../assets/images/images/Bruce.png";
-import Jack from "../../assets/images/images/Jack.png";
-import James from "../../assets/images/images/James.png";
-import Jane from "../../assets/images/images/Jane.png";
-import Jenny from "../../assets/images/images/Jenny.png";
-import John from "../../assets/images/images/John.png";
-import Sahar from "../../assets/images/images/Sahar.png";
-import yas from "../../assets/images/images/yas.png";
-
+import IsLoading from "../../components/IsLoading/IsLoading";
 import rightArrow from "../../assets/images/icons/right-chevron (1).svg";
 
 export default function Expo({ selectedUserType, setSelectedUserType }) {
   document.title = "The BOX | Expo";
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    (async () => {
+      const users = await getUsersForExpo();
+      setUsers(users);
+      setIsLoading(false);
+      console.log("fetch done");
+    })();
+  }, []);
+
   const filteredUsers = selectedUserType
-    ? mockUsers.filter((user) => user.userType === selectedUserType)
-    : mockUsers;
+    ? users.filter((user) => user.user_type === selectedUserType)
+    : users;
 
   const handleClick = (event) => {
     if (event.target.innerText === "Students") {
@@ -38,6 +44,8 @@ export default function Expo({ selectedUserType, setSelectedUserType }) {
       setSelectedUserType("partner");
     }
   };
+
+  if (isLoading) return <IsLoading />;
 
   return (
     <div className="expo">
@@ -93,15 +101,18 @@ export default function Expo({ selectedUserType, setSelectedUserType }) {
                 <p className="expo-profile__bio">{user.bio}</p>
                 <div className="expo-projects">
                   {user.projects.map((project) => (
-                    <Link className="expo-projects__card" to={project.url}>
+                    <Link
+                      className="expo-projects__card"
+                      to={project.project_link}
+                    >
                       <h4 className="expo-projects__card-title">
-                        {project.name}
+                        {project.project_link}
                       </h4>
                       <span className="expo-projects__card-type">
-                        {project.type}
+                        {project.project_type}
                       </span>
                       <p className="expo-projects__card-description">
-                        {project.description}
+                        {project.project_description}
                       </p>
                     </Link>
                   ))}
@@ -111,7 +122,7 @@ export default function Expo({ selectedUserType, setSelectedUserType }) {
                 <p
                   className="expo-shortcuts__link"
                   onClick={() => {
-                    setSelectedUserType(user.userType);
+                    setSelectedUserType(user.user_type);
                     navigate(`/users/${user.username}`);
                   }}
                 >

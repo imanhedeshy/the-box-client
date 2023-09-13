@@ -46,7 +46,7 @@ export default function Chat() {
           message: message.message,
         }))
       );
-      window.scrollTo(0, document.body.scrollHeight);
+      // window.scrollTo(0, document.body.scrollHeight);
     };
 
     socket.on("chat message", onChatMessage);

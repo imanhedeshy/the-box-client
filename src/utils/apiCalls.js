@@ -126,6 +126,20 @@ const createCommentbyId = async (thread_id, content) => {
   }
 };
 
+const getUsersForExpo = async () => {
+  const headers = { Authorization: `${await getToken()}` };
+
+  try {
+    const result = await axios.get(`${API_URL}/users`, {
+      headers,
+    });
+
+    if (result.data.success) return result.data.users; else throw new Error("Incorret data received from server!")
+  } catch (error) {
+    console.error("Error fetching data from server:", error);
+  }
+};
+
 const signOut = async () => {
   removeToken("Token");
   localStorage.clear();
@@ -141,4 +155,5 @@ export {
   deleteThreadById,
   createCommentbyId,
   getStudentByUsername,
+  getUsersForExpo,
 };
