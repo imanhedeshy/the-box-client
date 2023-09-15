@@ -22,7 +22,7 @@ export default function Expo({ selectedUserType, setSelectedUserType }) {
       const users = await getUsersForExpo();
       setUsers(users);
       setIsLoading(false);
-      console.log("fetch done");
+      if (users) console.log("fetch done"); else console.error("error in getUsersForExpo users");
     })();
   }, []);
 
@@ -46,6 +46,8 @@ export default function Expo({ selectedUserType, setSelectedUserType }) {
   };
 
   if (isLoading) return <IsLoading />;
+
+  console.log(users);
 
   return (
     <div className="expo">

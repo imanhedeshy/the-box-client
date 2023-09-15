@@ -7,14 +7,17 @@ import "./Navbar.scss";
 export default function Navbar() {
   const navigate = useNavigate();
 
+  const user = JSON.parse(localStorage.getItem("storageUser"));
+  console.log(user.username);
+
   const handleClick = () => {
     signOut();
     navigate("/");
   };
   return (
     <nav className="navbar">
-      <NavLink className="navbar__li" to="/users/imanhedeshy">
-        Your Profile
+      <NavLink className="navbar__li" to={`/users/${user.username}`}>
+        My Profile
       </NavLink>
       <NavLink className="navbar__li" to="/yearbook">
         Yearbook
