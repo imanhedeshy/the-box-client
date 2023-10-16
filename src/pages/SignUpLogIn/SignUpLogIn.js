@@ -117,6 +117,24 @@ export default function SignUpLogIn({ user, setUser }) {
     }
   };
 
+  const handleSignIn = async (event) => {
+    event.preventDefault();
+    
+    const result = await logIn("Guest", "guest");
+
+    if (result.success) {
+      await setToken(result.token);
+      console.log(result);
+
+      localStorage.setItem("storageUser", JSON.stringify(result));
+      setUser(result);
+      navigate("/expo");
+    } else {
+      console.error(result.error);
+      setLoginError(result.error);
+    }
+  }
+
   return (
     <div className="signup-login">
       {isLoading ? (
@@ -231,15 +249,15 @@ export default function SignUpLogIn({ user, setUser }) {
             >
               Log In
             </button>
+            <span className={`signup-login-form__switch ${
+                !isLogIn ? "signup-login-form__button--hide" : ""
+              }`}>Continue as <strong onClick={handleSignIn}>guest!</strong></span>
             <div
               className={`signup-login-form__divider ${
                 !isLogIn ? "signup-login-form__divider--hide" : ""
               }`}
             >
-              <div className="line-with-text">
-                <div className="text">OR</div>
-                <div className="line"></div>
-              </div>
+              OR
             </div>
             <span
               className={`signup-login-form__button signup-login-form__button--switch ${

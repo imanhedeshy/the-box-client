@@ -15,8 +15,6 @@ export default function Navbar() {
   useEffect(() => {
     try {
       if (jwtToken) setIsLoggedIn(true);
-      console.log(jwtToken);
-      console.log(isLoggedIn);
     } catch (error) {
       console.error(error);
     }
@@ -24,27 +22,30 @@ export default function Navbar() {
 
   const handleClick = () => {
     signOut();
+    setIsLoggedIn(false);
     navigate("/");
   };
+  
   return (
     <nav className="navbar">
-      {user ? (
-        <NavLink className="navbar__li" to={`/users/${user.username}`}>
-          My Profile
-        </NavLink>
-      ) : (
-        ""
-      )}
-
-      <NavLink className="navbar__li" to="/threads">
-        Threads
-      </NavLink>
-
-      <NavLink className="navbar__li" to="/expo">
-        Expo
-      </NavLink>
       {isLoggedIn ? (
         <>
+          {user ? (
+            <NavLink className="navbar__li" to={`/users/${user.username}`}>
+              My Profile
+            </NavLink>
+          ) : (
+            ""
+          )}
+
+          <NavLink className="navbar__li" to="/threads">
+            Threads
+          </NavLink>
+
+          <NavLink className="navbar__li" to="/expo">
+            Expo
+          </NavLink>
+
           <NavLink className="navbar__li" to="/chat">
             Chat
           </NavLink>
