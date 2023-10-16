@@ -6,10 +6,11 @@ import "./Header.scss";
 import menu from "../../assets/images/icons/menu.png";
 
 export default function Header() {
+
   return (
     <div className="header">
       <img className="header__menubutton" src={menu} alt="menu button" />
-      <Navbar />
+      {<Navbar />}
       <NavLink className="header__logo" to="/threads">
         The <br/>BOX!
       </NavLink>
