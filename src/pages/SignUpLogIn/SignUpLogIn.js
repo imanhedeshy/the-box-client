@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 
-import { logIn, signUp, getStudentByUsername } from "../../utils/apiCalls";
+import { logIn, signUp } from "../../utils/apiCalls";
 import {
   isStrong,
   passwordsMatch,

@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 import "./Expo.scss";
 
-// import mockUsers from "../../data/mockUsersFprExpo";
 import { getUsersForExpo } from "../../utils/apiCalls";
 
 import IsLoading from "../../components/IsLoading/IsLoading";
@@ -24,7 +23,6 @@ export default function Expo({ selectedUserType, setSelectedUserType }) {
       const users = await getUsersForExpo();
       setUsers(users);
       setIsLoading(false);
-      // if (users) console.log("fetch done"); else console.error("error in getUsersForExpo users");
     })();
   }, []);
 
@@ -80,63 +78,63 @@ export default function Expo({ selectedUserType, setSelectedUserType }) {
       </div>
       <div className="expo__container">
         {filteredUsers.map((user) => (
-          <div key={user.user_id} className="expo-card">
-            <div className="expo-profile">
-              <img
-                className="expo-profile__picture"
-                src={`/assets/images/images/${user.name.split(" ")[0]}.png`}
-                alt="profile"
-              />
-              <h3 className="expo-profile__name">{user.name}</h3>
-              <span className="expo-profile__discipline">
-                {user.discipline}
-              </span>
-              <span className="expo-profile__cohort">
-                <strong>{user.cohortName}</strong>
-                <br />
-                {user.cohort} - {user.startDate}
-              </span>
-            </div>
-            <div className="expo-wrapper">
-              <h3 className="expo-profile__headline">{user.headline}</h3>
-              <p className="expo-profile__bio">{user.bio}</p>
-              <div className="expo-projects">
-                {user.projects.map((project) => (
-                  <Link
-                    className="expo-projects__card"
-                    key={project.project_id}
-                    to={project.project_link}
-                  >
-                    <h4 className="expo-projects__card-title">
-                      {project.project_link}
-                    </h4>
-                    <span className="expo-projects__card-type">
-                      {project.project_type}
-                    </span>
-                    <p className="expo-projects__card-description">
-                      {project.project_description}
-                    </p>
-                  </Link>
-                ))}
+            <div key={user.user_id} className="expo-card">
+              <div className="expo-profile">
+                <img
+                  className="expo-profile__picture"
+                  src={`/assets/images/images/${user.name.split(" ")[0]}.png`}
+                  alt="profile"
+                />
+                <h3 className="expo-profile__name">{user.name}</h3>
+                <span className="expo-profile__discipline">
+                  {user.discipline}
+                </span>
+                <span className="expo-profile__cohort">
+                  <strong>{user.cohortName}</strong>
+                  <br />
+                  {user.cohort} - {user.startDate}
+                </span>
+              </div>
+              <div className="expo-wrapper">
+                <h3 className="expo-profile__headline">{user.headline}</h3>
+                <p className="expo-profile__bio">{user.bio}</p>
+                <div className="expo-projects">
+                  {user.projects.map((project) => (
+                    <Link
+                      className="expo-projects__card"
+                      key={project.project_id}
+                      to={project.project_link}
+                    >
+                      <h4 className="expo-projects__card-title">
+                        {project.project_link}
+                      </h4>
+                      <span className="expo-projects__card-type">
+                        {project.project_type}
+                      </span>
+                      <p className="expo-projects__card-description">
+                        {project.project_description}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <div className="expo-shortcuts">
+                <p
+                  className="expo-shortcuts__link"
+                  onClick={() => {
+                    setSelectedUserType(user.user_type);
+                    navigate(`/users/${user.username}`);
+                  }}
+                >
+                  View Full Profile
+                  <img
+                    className="expo-shortcuts__chevron"
+                    src={rightArrow}
+                    alt=""
+                  />
+                </p>
               </div>
             </div>
-            <div className="expo-shortcuts">
-              <p
-                className="expo-shortcuts__link"
-                onClick={() => {
-                  setSelectedUserType(user.user_type);
-                  navigate(`/users/${user.username}`);
-                }}
-              >
-                View Full Profile
-                <img
-                  className="expo-shortcuts__chevron"
-                  src={rightArrow}
-                  alt=""
-                />
-              </p>
-            </div>
-          </div>
         ))}
       </div>
     </div>

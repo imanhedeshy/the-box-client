@@ -3,16 +3,6 @@ import io from "socket.io-client";
 
 import "./Chat.scss";
 
-import Iman from "../../assets/images/images/Iman.png";
-import Bruce from "../../assets/images/images/Bruce.png";
-import Jack from "../../assets/images/images/Jack.png";
-import James from "../../assets/images/images/James.png";
-import Jane from "../../assets/images/images/Jane.png";
-import Jenny from "../../assets/images/images/Jenny.png";
-import John from "../../assets/images/images/John.png";
-import Sahar from "../../assets/images/images/Sahar.png";
-import yas from "../../assets/images/images/yas.png";
-
 export default function Chat() {
   const SOCKET_URL = process.env.REACT_APP_SOCKET_URL;
 
