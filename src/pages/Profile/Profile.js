@@ -36,7 +36,7 @@ export default function Profile({ selectedUserType, user }) {
 
   if (location.pathname.endsWith("edit"))
     return (
-      <UpdateProfile user={userMap[selectedUserType || storageUserType]} />
+      <UpdateProfile user={userMap[storageUserType]} />
     );
   if ((selectedUserType || storageUserType) === "partner")
     return <PartnerProfile partner={partner} user={user} />;

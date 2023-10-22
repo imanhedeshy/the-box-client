@@ -3,8 +3,6 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  useNavigate,
-  useLocation,
 } from "react-router-dom";
 
 import generateRandomInCss from "./utils/generateRandomInCss";
