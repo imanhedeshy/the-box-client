@@ -56,13 +56,13 @@ function App() {
             path="/users/:username/edit"
             element={<Profile user={user} setUser={setUser} />}
           />
-          <Route path="/yearbook" element={<Yearbook />} />
-          <Route path="/threads" element={<Threads />} />
+          <Route path="/yearbook/:yearbookId" element={<Yearbook />} />
+          <Route path="/threads/:threadId" element={<Threads />} />
           <Route
             path="/expo"
             element={<Expo selectedUserType={selectedUserType} setSelectedUserType={setSelectedUserType} />}
           />
-          <Route path="/chat" element={<Chat />} />
+          <Route path="/chat/:chatId" element={<Chat />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>
