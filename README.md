@@ -1,7 +1,7 @@
 # BrainStation BOX Client
 
 <div align="center">
-  <img src="your-logo.png" alt="BrainStation BOX Logo">
+  <img src="./src/assets/images/logos/the-box-logo.jpg" alt="BrainStation BOX Logo">
 </div>
 
 ## Overview
