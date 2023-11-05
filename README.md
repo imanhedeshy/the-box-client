@@ -8,6 +8,8 @@
 
 Welcome to the BrainStation BOX client application! This is the front-end of our comprehensive yearbook and social networking platform.
 
+<a href="https://github.com/imanhedeshy/the-box-server.git"> TheBOX! API Repository</a>
+
 ## Features
 
 - ✨ Sign in, sign up, and sign out functionality
