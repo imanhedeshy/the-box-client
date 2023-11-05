@@ -1,15 +1,13 @@
 # BrainStation BOX Client
 
-<div style="display: flex; flex-direction: row;">
-  <img style="width: 20%;"  src="./src/assets/images/logos/the-box-logo.jpg" alt="BrainStation BOX Logo">
-  <img style="width 75%;" src="./src/assets/images/images/the-box-demo.jpg">
-</div>
+  <img src="./src/assets/images/images/the-box-demo.jpg">
 
 ## Overview
 
 Welcome to the BrainStation BOX client application! This is the front-end of our comprehensive yearbook and social networking platform.
 
-<a href="https://github.com/imanhedeshy/the-box-server.git"> TheBOX! API Repository</a>
+  <img style="width: 20%;"  src="./src/assets/images/logos/the-box-logo.jpg" alt="BrainStation BOX Logo">
+  <a href="https://github.com/imanhedeshy/the-box-server.git"> TheBOX! API Repository</a>
 
 ## Features
 
