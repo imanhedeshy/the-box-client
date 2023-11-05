@@ -1,7 +1,8 @@
 # BrainStation BOX Client
 
-<div align="center">
-  <img src="./src/assets/images/logos/the-box-logo.jpg" alt="BrainStation BOX Logo">
+<div align="center" style="display: flex; flex-direction: row;">
+  <img style="width: 20%;"  src="./src/assets/images/logos/the-box-logo.jpg" alt="BrainStation BOX Logo">
+  <img style="width 75%;" src="./src/assets/images/images/the-box-demo.jpg">
 </div>
 
 ## Overview
