@@ -1,45 +1,46 @@
-# TheBOX! Client
+# TheBox! Client
 
 <div align="center">
-  <img src="./src/assets/images/logos/the-box-logo.jpg" alt="BrainStation BOX Logo" width="20%">
+  <img src="./src/assets/images/logos/the-box-logo.jpg" alt="TheBox! Logo">
+  <a href="https://github.com/imanhedeshy/the-box-server.git"> TheBox! Server Repository</a>
 </div>
 
 ## Overview
 
-Welcome to the BrainStation BOX client application! This front-end powers our comprehensive yearbook and social networking platform, offering a dynamic and interactive experience.
+Welcome to TheBox! Client application! This is the front-end of our comprehensive yearbook and social networking platform. It works seamlessly with our server-side application to provide you with a powerful and engaging user experience.
 
 ## Features
 
 - ✨ Sign in, sign up, and sign out functionality.
-- 📷 Profile page to showcase abilities and experiences.
-- 📚 Yearbook page to connect with cohorts.
-- 🌐 Social networking features like posts, comments, and likes.
-- 💬 Real-time chat for constant connectivity with peers.
-- 🚀 Opportunities for top students to contribute to app development.
+- 📷 Profile page to showcase your abilities and experiences.
+- 📚 Yearbook page to connect with your cohort.
+- 🌐 Social networking features like posting, commenting, and liking.
+- 💬 Real-time chat to stay connected with peers.
+- 🚀 Top students can contribute to app growth.
 - 🎉 Fun group activities and more!
 
 ## Tech Stack
 
-- 🚀 React for building dynamic UI components.
-- 🌐 Axios for making API requests.
-- 🔒 JWT for managing authentication and authorization.
-- 🌈 Sass for advanced styling using BEM methodology.
-- 📚 React Router for seamless navigation between pages.
-- 💬 Socket.io for real-time chat functionalities.
+- 🚀 React for dynamic UI components.
+- 🌐 Axios for handling API requests.
+- 🔒 JWT for authentication and authorization.
+- 🌈 Sass for styling with BEM methodology.
+- 📚 React Router for navigation.
+- 💬 Socket.io for real-time chat.
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/imanhedeshy/the-box-client.git`.
+1. Clone the repository.
 2. Navigate to the project folder: `cd the-box-client`.
 3. Install dependencies: `npm install`.
 4. Run the development server: `npm start`.
 
 ## How to Use
 
-1. Sign up or log in to unlock full access to the platform's features.
-2. Use the navigation bar to explore different pages.
-3. Create a profile to showcase your skills, connect with peers, and engage in discussions.
-4. Engage in real-time chats and participate in fun activities.
+1. Sign up or log in to access the features.
+2. Navigate through the different pages using the navigation bar.
+3. Showcase your skills, connect with peers, and contribute to discussions.
+4. Participate in real-time chats and enjoy the fun activities!
 
 ## Project Structure
 
@@ -100,12 +101,14 @@ the-box-client/
 
 ## Contribution
 
-If you wish to contribute to BrainStation BOX client, please refer to the [CONTRIBUTING.md](./docs/CONTRIBUTING.md) document for guidelines.
-
-## Related Projects
-
-- [TheBOX! Server](https://github.com/imanhedeshy/the-box-server): The server-side implementation for TheBOX!.
+Contributions to TheBox! Client are welcomed. Please read [CONTRIBUTING.md](./docs/CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
 ## License
 
-Usage of the BrainStation BOX client is governed by the terms outlined in [LICENSE.md](./docs/LICENSE.md).
+This project is licensed under the [TheBox! Client License](LICENSE.md). Please see the [LICENSE.md](./docs/LICENSE.md) file for details.
+
+For inquiries or permission requests, contact [Iman Hedeshy](https://github.com/imanhedeshy):
+- Email: [iman.hedeshy@gmail.com](mailto:iman.hedeshy@gmail.com)
+- GitHub: [https://github.com/imanhedeshy](https://github.com/imanhedeshy)
+- LinkedIn: [https://www.linkedin.com/in/imanhedeshy/](https://www.linkedin.com/in/imanhedeshy/)
+- Website: [https://hedeshy.ca](https://hedeshy.ca)
