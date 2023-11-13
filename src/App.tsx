@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes
-} from "react-router-dom";
+import * as React from "react";
+import { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import generateRandomInCss from "./utils/generateRandomInCss";
 
@@ -27,7 +24,7 @@ function App() {
     type: "",
     name: "",
     username: "",
-    id: ""
+    id: "",
   });
 
   return (
@@ -50,15 +47,14 @@ function App() {
           <Route
             path="/users/:username"
             element={
-              <Profile
-                selectedUserType={selectedUserType}
-                user={user}
-              />
+              <Profile selectedUserType={selectedUserType} user={user} />
             }
           />
           <Route
             path="/users/:username/edit"
-            element={<Profile user={user} selectedUserType={selectedUserType}/>}
+            element={
+              <Profile user={user} selectedUserType={selectedUserType} />
+            }
           />
           <Route path="/yearbook/:yearbookId" element={<Yearbook />} />
           <Route path="/threads/:threadId" element={<Threads />} />
@@ -81,7 +77,6 @@ function App() {
 }
 
 export default App;
-
 
 // import { useState } from "react";
 // import {
