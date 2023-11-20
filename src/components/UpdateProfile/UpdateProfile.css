@@ -1,0 +1,65 @@
+.update-profile {
+  display: flex;
+  flex-direction: column;
+}
+.update-profile__picture {
+  text-align: center;
+  align-self: center;
+  width: 7.5rem;
+  aspect-ratio: 1;
+  margin: 1rem;
+}
+.update-profile__picture:hover {
+  cursor: pointer;
+}
+.update-profile-form {
+  display: flex;
+  flex-direction: column;
+}
+.update-profile-form__label {
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: lightslategrey;
+  padding-left: 1rem;
+  margin-left: 1rem;
+}
+.update-profile-form__input {
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid lightslategrey;
+  width: 100%;
+  margin: 0.25rem 0 0.75rem -1rem;
+}
+.update-profile-form__input--textarea {
+  resize: none;
+  height: 6rem;
+}
+.update-profile-form__button {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 3rem;
+  border-radius: 0.25rem;
+  outline: none;
+  background-color: blue;
+  border: 0.0625rem solid blue;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: white;
+}
+.update-profile-form__button--hide {
+  display: none;
+}
+.update-profile-form__button:hover {
+  cursor: pointer;
+  background-color: darkblue;
+}
+.update-profile-form__button:active {
+  background-color: black;
+}/*# sourceMappingURL=UpdateProfile.css.map */

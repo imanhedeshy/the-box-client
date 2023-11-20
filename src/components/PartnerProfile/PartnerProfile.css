@@ -1,0 +1,238 @@
+.partner-profile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.partner-profile-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.partner-profile-info__edit-button {
+  align-self: flex-end;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-right: 0.75rem;
+  color: #1358db;
+}
+.partner-profile-info__edit-button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.partner-profile-info__background {
+  width: calc(100% + 2rem);
+  height: 8rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: bottom;
+     object-position: bottom;
+  margin: -1rem;
+}
+.partner-profile-info__pic {
+  width: 35%;
+  margin: -4rem auto 2rem auto;
+  border: 0.125rem solid #f3f8ff;
+  border-radius: 0.5rem;
+}
+.partner-profile-info__detail {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.partner-profile-info__detail > * {
+  margin-bottom: 0.125rem;
+}
+.partner-profile-info__detail-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.partner-profile-info__detail-headline {
+  margin-bottom: 0.5rem;
+}
+.partner-profile-info__detail-industry, .partner-profile-info__detail-location {
+  font-size: 0.875rem;
+  color: #767676;
+}
+.partner-profile-info__detail-industry {
+  font-weight: 600;
+}
+.partner-profile-info__detail-employees {
+  font-size: 0.75rem;
+  font-weight: 600;
+  align-self: flex-end;
+  margin-right: 1rem;
+}
+.partner-profile-info__detail-employees:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.partner-profile-info__contact {
+  display: flex;
+  flex-direction: column;
+  border: 0.0625rem solid silver;
+  border-radius: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+.partner-profile-info__contact > * {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+}
+.partner-profile-info__contact-icon {
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+.partner-profile-info__links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 0.5rem;
+  gap: 1rem;
+}
+.partner-profile-info__links-icon {
+  width: 1.5rem;
+}
+.partner-profile-info__bio {
+  display: flex;
+  flex-direction: column;
+}
+.partner-profile-info__bio-title {
+  font-size: 1rem;
+}
+.partner-profile-info__bio-contentwrapper {
+  padding: 0.75rem;
+  border: 0.0625rem solid silver;
+  border-radius: 0.5rem;
+}
+.partner-profile-info__bio-content {
+  font-size: 0.875rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.partner-profile-info__bio-content--expanded {
+  -webkit-line-clamp: 15;
+}
+.partner-profile-info__bio-resume {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+.partner-profile-hero {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  gap: 0.25rem;
+  width: calc(100% + 2rem);
+  margin-left: -1rem;
+  margin-bottom: 1rem;
+  padding: 0.25rem 0;
+  background-color: #ececec;
+}
+.partner-profile-hero__video {
+  background-color: #000000;
+  border-radius: 0.25rem;
+  border: none;
+  flex: 0 0 95%;
+  aspect-ratio: 16/9;
+}
+.partner-profile-jobs {
+  display: flex;
+  flex-direction: column;
+  overflow-x: scroll;
+  width: 100%;
+}
+.partner-profile-jobs__title {
+  margin-top: 1rem;
+  width: 100%;
+  font-size: 1.25rem;
+}
+.partner-profile-jobs__list {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+.partner-profile-jobs__list-title {
+  margin-top: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+}
+.partner-profile-jobs__list-items {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  gap: 0.75rem;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.partner-profile-jobs__list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 0.0625rem solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  width: 65%;
+  aspect-ratio: 1/1.618;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+.partner-profile-jobs__list-item > p {
+  padding: 1rem;
+  font-size: 0.85rem;
+}
+.partner-profile-jobs__list-item > h4 {
+  animation: pulse infinite 7s forwards;
+  border: 0.0625rem solid slategray;
+  border-radius: 0.25rem;
+  padding: 3rem;
+  height: 60%;
+  width: 90%;
+}
+.partner-profile-jobs__list-item > h4 > a:hover {
+  text-decoration: underline;
+}
+.partner-profile-jobs__list-item:hover {
+  cursor: pointer;
+  background-color: #f3f8ff;
+}
+.partner-profile-jobs__list-item:active {
+  transform: scale(0.98);
+}
+.partner-profile-skills {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.partner-profile-skills__title {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+.partner-profile-skills__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.partner-profile-skills__list-item {
+  width: 13%;
+}
+.partner-profile-skills__list-item > img {
+  width: 100%;
+  margin: 0.25rem;
+}/*# sourceMappingURL=PartnerProfile.css.map */

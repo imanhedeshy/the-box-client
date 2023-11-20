@@ -1,0 +1,232 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes tilt-shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: translateY(-10px) rotate(15deg);
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+@keyframes foldCube {
+  0%, 10% {
+    transform: perspective(140px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%, 75% {
+    transform: perspective(140px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%, 100% {
+    transform: perspective(140px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+@keyframes waveAnimation {
+  0%, 60%, 100% {
+    transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1);
+  }
+  40% {
+    transform: scaleY(0.8);
+  }
+}
+@keyframes loadingDot {
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes bounceRight {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0.99);
+    box-shadow: 0 0 5px rgba(197, 197, 197, 0.7);
+  }
+  50% {
+    transform: scale(1.01);
+    box-shadow: 0 0 20px rgba(207, 207, 207, 0.7), 0 0 30px rgba(245, 245, 245, 0.7);
+  }
+  100% {
+    transform: scale(0.99);
+    box-shadow: 0 0 5px rgba(190, 190, 190, 0.7);
+  }
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes rotateCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotateText {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(3deg);
+  }
+}
+@keyframes rotateExplode {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2) rotate(360deg);
+    opacity: 0;
+  }
+}
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@font-face {
+  font-family: "Avenir Next";
+  font-weight: 400;
+  font-size: normal;
+  src: url("../../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype"), url("../../assets/fonts/Alternativefiles/AvenirNextLTPro.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Avenir Next";
+  font-weight: 700;
+  font-size: bold;
+  src: url("../../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype"), url("../../assets/fonts/Alternativefiles/AvenirNextLTProBold.ttf") format("truetype");
+}
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+*,
+*::after,
+*::before {
+  font-family: "Avenir Next", "Courier New", Courier, monospace, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  justify-content: center;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+body,
+header,
+main,
+footer {
+  min-width: 320px;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  font-weight: 400;
+  font-size: normal;
+  src: url("../../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype"), url("../../assets/fonts/Alternativefiles/AvenirNextLTPro.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Avenir Next";
+  font-weight: 700;
+  font-size: bold;
+  src: url("../../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype"), url("../../assets/fonts/Alternativefiles/AvenirNextLTProBold.ttf") format("truetype");
+}
+.app {
+  background-color: white;
+  width: 100%;
+  height: 100vh;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.pages {
+  width: 90%;
+  max-width: 120rem;
+  padding: 1rem;
+  margin: 0rem auto 3rem auto;
+  border-radius: 0.25rem;
+  background-color: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* {
+  border: .0625rem solid salmon;
+} *//*# sourceMappingURL=App.css.map */
