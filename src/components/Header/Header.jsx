@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import Navbar from "../Navbar/Navbar";
 
@@ -11,9 +11,9 @@ export default function Header() {
     <div className="header">
       <img className="header__menubutton" src={menu} alt="menu button" />
       {<Navbar />}
-      <NavLink className="header__logo" to="/threads">
+      <Link className="header__logo" to="/">
         The <br/>BOX!
-      </NavLink>
+      </Link>
     </div>
   );
 }

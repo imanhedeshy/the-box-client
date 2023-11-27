@@ -32,7 +32,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx"
-  ],
+, "src/data/mockUsersFprExpo.js", "src/pages/Yearbook/Yearbook.jsx", "src/pages/Threads/Threads.jsx", "src/pages/SignUpLogIn/SignUpLogIn.jsx", "src/pages/Expo/Expo.jsx", "src/pages/Chat/Chat.jsx", "src/components/UpdateProfile/updateProfile.jsx", "src/components/StudentProfile/StudentProfile.jsx", "src/components/PartnerProfile/PartnerProfile.jsx", "src/components/NotFound/NotFound.jsx", "src/components/Navbar/Navbar.jsx", "src/components/IsLoading/IsLoading.jsx", "src/components/Footer/Footer.jsx", "src/components/Header/Header.jsx"  ],
   "exclude": [
     "node_modules"
   ]

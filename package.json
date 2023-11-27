@@ -1,7 +1,7 @@
 {
   "name": "the-box-client",
   "version": "0.1.0",
-  "homepage": "https://imanhedeshy.github.io/the-box-client",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
