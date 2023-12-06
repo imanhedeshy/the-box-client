@@ -32,6 +32,7 @@ function App() {
   });
 
   return (
+    // TODO: add context, suspense, and error handling
     <Router className="app">
       <Header />
       <div className="pages">
