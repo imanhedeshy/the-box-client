@@ -44,7 +44,7 @@ Welcome to TheBox! Client application! This is the front-end of our comprehensiv
 
 ## Project Structure
 
-Below is the structure of the BrainStation BOX client project:
+Below is the structure of The BOX client project:
 
 ```
 the-box-client/
