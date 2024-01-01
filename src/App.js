@@ -4,7 +4,6 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-
 import generateRandomInCss from "./utils/generateRandomInCss";
 
 import SignUpLogIn from "./pages/SignUpLogIn/SignUpLogIn";
