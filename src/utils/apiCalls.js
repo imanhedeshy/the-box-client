@@ -134,7 +134,8 @@ const getUsersForExpo = async () => {
       headers,
     });
 
-    if (result.data.success) return result.data.users; else throw new Error("Incorret data received from server!")
+    if (result.data.success) return result.data.users;
+    else throw new Error("Incorret data received from server!");
   } catch (error) {
     console.error("Error fetching data from server:", error);
   }
